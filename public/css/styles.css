@@ -1,0 +1,385 @@
+li {
+    list-style-type: none;
+}
+
+a,
+a:hover {
+    text-decoration: none;
+}
+
+.whole-header {
+    color: aliceblue;
+    background-color: rgb(48, 48, 48);
+    position: fixed;
+    z-index: 1;
+    text-align: center;
+    background-image: linear-gradient(to left top, #00b75f, #00b585, #00b1a3, #00abb6, #00a3be, #0095bd, #0086ba, #0076b4, #005ca6, #004195, #002681, #000268);
+}
+
+.navbarText {
+    color: #000000;
+    padding: 10% 15%;
+}
+
+.navbar {
+    margin-top: 5%;
+    text-align: left;
+}
+
+.liClsNavBar {
+    text-align: center;
+    padding: 8% 5%;
+    margin: 5% 0;
+    border-bottom-left-radius: 10rem;
+    border-top-right-radius: 10rem;
+    background-image: url("https://www.transparenttextures.com/patterns/45-degree-fabric-light.png");
+    cursor: pointer;
+}
+
+a {
+    font-size: large;
+    font-family: 'Bree Serif';
+}
+
+a:hover {
+    color: yellow;
+}
+
+.liClsNavBar:hover {
+    box-shadow: 5px 2px 20px whitesmoke;
+}
+
+.navbarBottom {
+    margin-bottom: 100%;
+}
+
+.user {
+    text-align: center;
+    margin-right: 15%;
+    font-family: 'Secular One';
+}
+
+.name {
+    font-family: 'Pacifico';
+    margin-top: 10%;
+    color: rgb(255, 198, 77);
+}
+
+.name2 {
+    font-family: 'Pacifico';
+}
+
+.gra-img {
+    background-image: url("https://www.transparenttextures.com/patterns/45-degree-fabric-light.png");
+}
+
+@media screen and (min-width: 1024px) {
+    #Toggler {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 949px) {
+    #NavBarSec {
+        display: none;
+    }
+}
+
+.wholeBody {
+    color: black;
+    background-image: url("https://www.transparenttextures.com/patterns/brushed-alum-dark.png");
+}
+
+.deactive {
+    display: none;
+}
+
+
+/* MenuBar */
+
+.BurgerIcon {
+    background-color: rgb(0, 0, 0);
+    padding: 15% 15%;
+    border-radius: 1rem;
+}
+
+.upDiv {
+    top: 5%;
+    margin-right: 3%;
+    float: right;
+}
+
+@media screen and (max-width: 450px) {
+    .BurgerIcon {
+        padding: 35% 35%;
+        font-size: x-large;
+    }
+    .upDiv {
+        margin-right: 6%;
+    }
+}
+
+
+/* model */
+
+.navbarTextModel {
+    padding: 5% 15%;
+    border-bottom-left-radius: 10rem;
+    border-top-right-radius: 10rem;
+}
+
+.liClsNavBar2 {
+    padding: 0 10%;
+}
+
+.ModelItems {
+    padding: 1.5% 20%;
+}
+
+.userModel {
+    text-align: center;
+    font-family: 'Secular One';
+}
+
+.wholeModel {
+    padding-top: 5%;
+    color: white;
+    cursor: pointer;
+    background-image: linear-gradient(to left top, #00b75f, #00b585, #00b1a3, #00abb6, #00a3be, #0095bd, #0086ba, #0076b4, #005ca6, #004195, #002681, #000268);
+}
+
+.navbarTextModel {
+    font-weight: bolder;
+    font-size: large;
+    color: wheat;
+    text-align: center;
+    font-family: 'Bree Serif';
+    background-image: url("https://www.transparenttextures.com/patterns/45-degree-fabric-light.png");
+}
+
+
+/* home */
+
+.home-head {
+    margin-top: 5%;
+    font-family: 'Luxurious Roman', cursive;
+    text-align: center;
+}
+
+.home-student-head {
+    font-family: 'Zilla Slab', serif;
+}
+
+.font-size {
+    font-size: 170%;
+    font-family: 'Neuton', serif;
+    line-height: 70px;
+}
+
+.home-icon-student {
+    font-size: 200px;
+}
+
+@media screen and (max-width: 430px) {
+    .home-icon-student {
+        display: none;
+        line-height: 60px;
+    }
+}
+
+@media screen and (max-width:770px) {
+    .home-icon-student {
+        font-size: 120px;
+        margin-left: 40%;
+    }
+    .font-size {
+        line-height: 60px;
+    }
+}
+
+
+/* contact */
+
+.contact {
+    padding: 3% 15%;
+    padding-bottom: 0;
+}
+
+.contactIcons {
+    margin-right: 5%;
+    padding: 1% 1%;
+    border-radius: 1rem;
+    color: black;
+    background-color: white;
+}
+
+.contactIcons:hover {
+    background-color: #000000;
+    color: white;
+}
+
+.SowbiName {
+    font-family: 'Pacifico';
+    color: #000000;
+}
+
+.AllHeading {
+    font-family: 'Arvo';
+}
+
+
+/* ----------------------- LOGIN ----------------------- */
+
+.message_btn {
+    font-size: 1.5rem;
+}
+
+#signinToggler {
+    cursor: pointer;
+}
+
+.my-login-page .card-wrapper {
+    width: 400px;
+}
+
+.card {
+    border-color: transparent;
+    box-shadow: 0 4px 8px rgb(0, 0, 0);
+    border-radius: 50px;
+}
+
+.card.fat {
+    padding: 10px;
+    padding-top: 0;
+}
+
+.card .card-title {
+    margin-bottom: 30px;
+}
+
+.form-group label {
+    width: 100%;
+}
+
+.btn-index {
+    padding: 12px 10px;
+    margin-bottom: 5%;
+}
+
+.login-whole {
+    padding: 3% 30%;
+    padding-bottom: 2%;
+}
+
+@media screen and (max-width: 425px) {
+    .card-wrapper {
+        width: 90%;
+        margin: 0 auto;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .card.fat {
+        padding: 0;
+    }
+    .card.fat .card-body {
+        padding: 15px;
+    }
+}
+
+@media screen and (max-width: 720px) {
+    .login-whole {
+        padding: 5% 5%;
+    }
+}
+
+@media screen and (max-width: 420px) {
+    .login-whole {
+        padding: 5% 0;
+    }
+}
+
+
+/* form */
+
+.switch-bar {
+    border: 0;
+    text-align: center;
+    padding: 1.5% 0;
+    background-color: #999999;
+    cursor: pointer;
+}
+
+#loginBar :hover,
+#signupBar :hover {
+    color: #00076d;
+    font-size: 2rem;
+    padding: 0 0;
+}
+
+.switch-text {
+    font-family: 'PT Sans Narrow';
+    font-weight: bolder;
+    font-size: 2rem;
+    padding: 2% 0;
+}
+
+.white {
+    background-color: #c3c3c3;
+    ;
+    color: black;
+}
+
+.round-edge-lt {
+    border-top-left-radius: 50px;
+}
+
+.round-edge-rt {
+    border-top-right-radius: 50px;
+}
+
+.formTopCls {
+    margin-top: 5%;
+}
+
+@media screen and (max-width: 576px) {
+    .vl {
+        border-left: none;
+    }
+    .switch-bar {
+        padding: 0.5% 0;
+    }
+    .round-edge-lt {
+        border-top-right-radius: 50px;
+    }
+    .round-edge-rt {
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+    }
+}
+
+.hand {
+    cursor: pointer;
+}
+
+.popup {
+    /* background-image: linear-gradient(to bottom, #ff0000, #f70000, #ee0000, #e60000, #de0000, #d50000, #cc0001, #c30001, #b80001, #ac0001, #a10001, #960000); */
+    color: white;
+    padding: 0 5%;
+    text-align: center;
+    font-size: large;
+    margin-top: 2%;
+}
+
+.popup-head {
+    padding: 1% 0;
+}
+
+.welcomeDiv {
+    text-align: center;
+    margin-top: 2%;
+}
+
+.welcomeHeading {
+    font-family: 'Secular One';
+}
