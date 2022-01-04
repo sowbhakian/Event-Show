@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/jpg" sizes="32x32" href="CV.jpg">
+    <title>Event Show</title>
+
+
+    <!-- icons links -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+
+    <!-- google-font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&family=Scheherazade+New:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Secular+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Acme&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Arvo:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Neuton:wght@200&family=Playfair+Display&display=swap" rel="stylesheet">
+    <!-- google icons -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+    <!-- bootstrap links -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/styles.css">
+
+
+
+</head>
+
+<body class="wholeBody">
+
+    <!-- NavBar -->
+    <section>
+        <header>
+            <div id="NavBarSec" class="whole-header float-left col-lg-3 col-md-3">
+                <div class="container">
+                    <div class="user">
+                        <!-- <img src="me.jpg" alt=""> -->
+                        <h3 class="name">Event Show</h3>
+                        <p class="name2">Glory Your Self By Participating</p>
+                        <h6 class="text-light my-auto">
+                            <i class="fas fa-user-tie fa-2x"></i>
+                            <samp class="nameIndex">
+                                <p>
+                                    <%=AdminName%>
+                                </p>
+                            </samp>
+
+                        </h6>
+                    </div>
+
+                    <nav class="navbar ">
+                        <ul class="row">
+                            <li class="liClsNavBar col-lg-11 border border-dark"><a class="navbarText" href="/">Home</a></li>
+                            <li class="liClsNavBar col-lg-11 border border-dark"><a class="navbarText" href="/event">Events</a></li>
+                            <li class="liClsNavBar col-lg-11 border border-dark"><a class="navbarText" href="/signin">Sign In</a></li>
+                            <li class="liClsNavBar col-lg-11 border border-dark"><a class="navbarText" href="#">Admin</a></li>
+                            <li class="liClsNavBar col-lg-11 border border-dark navbarBottom"><a class="navbarText" href="/logout">Log Out</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </header>
+    </section>
+
+    <!-- Context Body -->
+    <div class="row container-fluid">
+
+        <!-- Context Body -->
+        <div class="row container-fluid">
+
+            <!-- Home -->
+            <div class="col-lg-3"></div>
+            <section class="home col-lg-9">
+                <div class="welcomeDiv">
+                    <h1 class=" text-center AllHeading">
+                        <span class="QuaHead">Add List Of Events - <u class="text-dark">ADMIN</u>
+                            <span class="addButton">
+                                <!-- Add Event Icon -->
+                                <a href="#title-section" class="addButton">
+                                    <div class="sticky-top upDiv text-right">
+                                        <i class="fas fa-calendar-plus fa-2x" type="button" data-toggle="modal" data-target="#addEvents"></i>
+                                    </div>
+                                </a>
+                            </span>
+                        </span>
+                    </h1>
+                    <div class="pl-5 pr-5">
+                        <hr class="text-dark border border-1">
+                    </div>
+                </div>
+
+                <%if(message == "Event Name Already Exits!"){%>
+                    <div class="alert alert-danger text-center alert-dismissible">
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close" title="close">×</a>
+                        <strong><%=message%></strong>
+                    </div>
+                    <%}else if(message == "Event Registered Successfully"){%>
+                        <div class="alert alert-success text-center alert-dismissible">
+                            <a href="#" class="close" data-dismiss="alert" aria-label="close" title="close">×</a>
+                            <strong><%=message%></strong>
+                        </div>
+                        <%}else if(message == "Event Removed Successfully!"){%>
+                            <div class="alert alert-success text-center alert-dismissible">
+                                <a href="#" class="close" data-dismiss="alert" aria-label="close" title="close">×</a>
+                                <strong><%=message%></strong>
+                            </div>
+                            <%}%>
+
+
+                                <!-- Main Event-->
+                                <div class="row">
+                                    <% ListOfEvent.forEach((e)=>{ %>
+                                        <div class="col-lg-6 col-md-6 cardWhole">
+                                            <div class="card">
+                                                <div class="cardHeader">
+                                                    <%=e.clgname%>
+                                                        <form action="/removeEvent" method="post">
+                                                            <input type="hidden" name="eventName" value="<%=e.eventname%>">
+                                                            <!-- <i class="fas fa-calendar-minus fa-2x text-danger" type="submit"></i> -->
+                                                            <button type="submit " class="btn btn-danger " onclick="removeEvent() ">Remove</button>
+                                                        </form>
+                                                        <hr>
+                                                </div>
+
+                                                <div class="cardBody ">
+                                                    <div class="cardList ">
+                                                        <i class="fas fa-school CardIcons "></i> <span class="cardText "> <u>Event Name</u> - <%=e.eventname%></span>
+                                                    </div>
+
+                                                    <div class="cardList ">
+                                                        <i class="far fa-clock CardIcons "></i> <span class="cardText "> <u>Due Date</u> - <%=e.startdate%> </span>
+                                                    </div>
+
+                                                    <div class="cardList ">
+                                                        <i class="fas fa-envelope-open-text CardIcons "></i> <span class="cardText "> <u>Medium</u> - <%=e.medium%></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <% }) %>
+                                </div>
+
+
+
+            </section>
+        </div>
+    </div>
+
+
+    <!-- MenuBar Icon -->
+    <div id="Toggler" class="sticky-top upDiv text-right">
+        <a href="#title-section">
+            <i class="fas fa-2x fa-bars fa-1x text-warning BurgerIcon" type="button" data-toggle="modal" data-target="#signin-Modal"></i>
+        </a>
+    </div>
+    <!-- Model Burgger -->
+    <article>
+        <div class="modal fade" id="signin-Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <!-- Close -->
+                    <div class="modal-header border-bottom-0">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
+                    <!-- Context -->
+                    <div class="modal-body">
+                        <div class="container wholeModel">
+                            <div class="text-center">
+
+                                <h3 class="name">Event Show</h3>
+                                <p>Glory Your Self By Participating</p>
+                                <h6 class="text-light my-auto">
+                                    <i class="fas fa-user-tie fa-2x"></i>
+                                    <samp class="nameIndex">
+                                        <%=AdminName%>
+                                    </samp>
+                                </h6>
+                            </div>
+
+                            <div class="container ModelItems">
+                                <p data-dismiss="modal" aria-label="Close" class="border border-dark navbarTextModel " onclick="clickHome()">Home</p>
+                            </div>
+                            <div class="container ModelItems">
+                                <p data-dismiss="modal" aria-label="Close" class="border border-dark navbarTextModel " onclick="clickEvents()">Event</p>
+                            </div>
+                            <div class="container ModelItems">
+                                <p data-dismiss="modal" aria-label="Close" class="border border-dark navbarTextModel " onclick="clickSignin()">Sign In</p>
+                            </div>
+                            <div class="container ModelItems">
+                                <p data-dismiss="modal" aria-label="Close" class="border border-dark navbarTextModel " onclick="clickAdmin()">Admin</p>
+                            </div>
+                            <div class="container ModelItems">
+                                <a href="">
+                                    <p data-dismiss="modal" aria-label="Close" class="border border-dark navbarTextModel ">Log Out</p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </article>
+
+
+    <!-- Add Event Model -->
+
+    <article>
+        <div class="modal fade" id="addEvents" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <!-- Close -->
+                    <div class="modal-header border-bottom-0">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
+                    <!-- Context -->
+                    <div class="modal-body">
+                        <div class="container modelBackGroung">
+                            <form action="/adminEventAdd" method="post">
+                                <div class="card">
+                                    <div class="cardHeader text-center">
+                                        Enter Your Details
+                                        <hr>
+                                    </div>
+
+                                    <div class="cardBody">
+
+                                        <div class="cardList">
+                                            <i class="fas fa-university CardIcons"></i><span class="cardText"> <u>College Name:</u>                                         
+                                                </span>
+                                            <input type="text" name="clgname" required>
+                                        </div>
+
+                                        <div class="cardList">
+                                            <i class="fas fa-school CardIcons"></i> <span class="cardText"> <u>Event Name:</u> 
+                                                </span>
+                                            <input type="text" name="eventname" required>
+                                        </div>
+
+                                        <div class="cardList">
+                                            <i class="fas fa-hourglass-start CardIcons"></i><span class="cardText"> <u>Regs closes on:</u>
+                                                <input type="date" name="registrationdate" required>
+                                            </span>
+                                        </div>
+                                        <div class="cardList">
+                                            <i class="fas fa-hourglass-start CardIcons"></i><span class="cardText"> <u>Start Date:</u>
+                                                <input type="date" name="startdate" required>
+                                            </span>
+                                        </div>
+
+                                        <div class="cardList ">
+                                            <i class="fas fa-hourglass-end CardIcons"></i><span class="cardText"> <u>End Date:</u>
+                                                <input type="date" name="enddate" required>
+                                            </span>
+                                        </div>
+
+
+                                        <div class="cardList">
+                                            <i class="fas fa-city CardIcons"></i> <span class="cardText"> <u>City:</u>
+                                                <select name="state" required>
+                                                    <option value="Andhra Pradesh">Andhra Pradesh</option>
+                                                    <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+                                                    <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                                                    <option value="Assam">Assam</option>
+                                                    <option value="Bihar">Bihar</option>
+                                                    <option value="Chandigarh">Chandigarh</option>
+                                                    <option value="Chhattisgarh">Chhattisgarh</option>
+                                                    <option value="Dadar and Nagar Haveli">Dadar and Nagar Haveli</option>
+                                                    <option value="Daman and Diu">Daman and Diu</option>
+                                                    <option value="Delhi">Delhi</option>
+                                                    <option value="Lakshadweep">Lakshadweep</option>
+                                                    <option value="Puducherry">Puducherry</option>
+                                                    <option value="Goa">Goa</option>
+                                                    <option value="Gujarat">Gujarat</option>
+                                                    <option value="Haryana">Haryana</option>
+                                                    <option value="Himachal Pradesh">Himachal Pradesh</option>
+                                                    <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+                                                    <option value="Jharkhand">Jharkhand</option>
+                                                    <option value="Karnataka">Karnataka</option>
+                                                    <option value="Kerala">Kerala</option>
+                                                    <option value="Madhya Pradesh">Madhya Pradesh</option>
+                                                    <option value="Maharashtra">Maharashtra</option>
+                                                    <option value="Manipur">Manipur</option>
+                                                    <option value="Meghalaya">Meghalaya</option>
+                                                    <option value="Mizoram">Mizoram</option>
+                                                    <option value="Nagaland">Nagaland</option>
+                                                    <option value="Odisha">Odisha</option>
+                                                    <option value="Punjab">Punjab</option>
+                                                    <option value="Rajasthan">Rajasthan</option>
+                                                    <option value="Sikkim">Sikkim</option>
+                                                    <option value="Tamil Nadu">Tamil Nadu</option>
+                                                    <option value="Telangana">Telangana</option>
+                                                    <option value="Tripura">Tripura</option>
+                                                    <option value="Uttar Pradesh">Uttar Pradesh</option>
+                                                    <option value="Uttarakhand">Uttarakhand</option>
+                                                    <option value="West Bengal">West Bengal</option>
+                                                </select>
+                                            </span>
+                                        </div>
+
+                                        <div class="cardList">
+                                            <i class="fas fa-envelope-open-text CardIcons "></i> <span class="cardText"> <u>Medium:</u>
+                                                <input type="radio" id="online" name="medium" value="online" required>
+                                                <label for="html">Online</label>    
+                                                <input type="radio" id="offline" name="medium" value="offline" >
+                                                <label for="css">Offline</label>
+                                            </span>
+                                        </div>
+
+                                        <div class="cardList">
+                                            <i class="fas fa-school CardIcons"></i>
+                                            <span class="cardText"> <u>Event Description:</u> 
+                                            </span>
+                                            <textarea name="eventDescription" cols="40" rows="3"></textarea>
+                                        </div>
+                                        <div class="EventRegsButton">
+                                            <button type="submit" class="btn btn-outline-success">Add</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </article>
+
+    <!-- footer -->
+    <!-- <div class="col-lg-3"></div>
+        <footer class="col-lg-9" id="contact">
+            <div class="text-center">
+
+                <h5 class="contact">
+                    <a href="#" target="_blank">
+                        <i class="fab fa-github-square fa-2x contactIcons"></i>
+                    </a>
+                    <a href="mailto:sowbhakian.shansan@gmail.com" target="_blank">
+                        <i class="fas fa-envelope fa-2x contactIcons"></i>
+                    </a>
+                    <a href="#" target="_blank">
+                        <i class="fab fa-linkedin fa-2x contactIcons"></i>
+                    </a>
+                    <a href="#" target="_blank">
+                        <i class="fab fa-instagram-square fa-2x contactIcons"></i>
+                    </a>
+
+                </h5>
+                <span class="SowbiName">  <i class="far fa-copyright"></i>  Event Show</span>
+                                        </div>
+                                        </footer>
+                                    </div> -->
+
+    <!-- jQuery -->
+    <script src='https://code.jquery.com/jquery-3.3.1.slim.min.js'></script>
+    <!-- Popper JS -->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js'></script>
+    <!-- Bootstrap JS -->
+    <script src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js'></script>
+    <script src="animation.js"></script>
+</body>
+
+</html>

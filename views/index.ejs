@@ -22,6 +22,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Acme&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Arvo:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Neuton:wght@200&family=Playfair+Display&display=swap" rel="stylesheet">
 
     <!-- google icons -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -63,7 +64,7 @@
                             <li class="liClsNavBar col-lg-11 border border-dark"><a class="navbarText" href="/">Home</a></li>
                             <li class="liClsNavBar col-lg-11 border border-dark"><a class="navbarText" href="/event">Events</a></li>
                             <li class="liClsNavBar col-lg-11 border border-dark"><a class="navbarText" href="/signin">Sign In</a></li>
-                            <li class="liClsNavBar col-lg-11 border border-dark"><a class="navbarText" href="/admin">Admin</a></li>
+                            <li class="liClsNavBar col-lg-11 border border-dark"><a class="navbarText" href="/adminEvent">Admin</a></li>
                             <li class="liClsNavBar col-lg-11 border border-dark navbarBottom"><a class="navbarText" href="logout">Log Out</a></li>
                         </ul>
                     </nav>
@@ -88,43 +89,50 @@
 
             <!-- Home -->
             <div class="col-lg-3"></div>
-            <section class="home col-lg-7" id="home">
-                <h1 class="home-head">GEAR UP FOR UPCOMING COLLEGE FESTIVALS | COLLEGE FESTS </h1>
+            <section class="home col-lg-9 container-fluid" id="home">
+                <div class="welcomeDiv">
+                    <h1 class=" text-center AllHeading"> <span class="QuaHead">GEAR UP FOR UPCOMING COLLEGE FESTIVALS | COLLEGE FESTS </span>
+                        <i class="far fa-laugh-wink"></i>
+                    </h1>
+                    <div class="pl-5 pr-5">
+                        <hr class="text-dark border border-1">
+                    </div>
+                </div>
                 <div class="home-student-div mt-5">
                     <div class="row">
                         <div class="col-lg-11">
-                            <h3 class="home-student-head">Student :</h3>
-                            <ul class="font-size">
+                            <h3 class="home-student-head"><i class="fas fa-user-graduate home-icon-student mt-5 fa-2x"></i>Student :</h3>
+                            <ul class="font-size-text">
                                 <li><i class="fas fa-check-circle mr-2"></i>Students can able to view the upcomming events by registering.</li>
                                 <li><i class="fas fa-check-circle mr-2"></i>There is a form for every events for registering.</li>
                                 <li><i class="fas fa-check-circle mr-2"></i>Students can able to view the events only after registering.</li>
                             </ul>
                         </div>
-                        <div class="col-lg-1">
+                        <!-- <div class="col-lg-1">
                             <i class="fas fa-user-graduate home-icon-student mt-5"></i>
-                        </div>
+                        </div> -->
                     </div>
                     <div class="row">
                         <div class="col-lg-11">
-                            <h3 class="home-student-head">Admin :</h3>
-                            <ul class="font-size">
+                            <h3 class="home-student-head"><i class="fas fa-user-shield home-icon-student mt-5 fa-2x"></i>Admin :</h3>
+                            <ul class="font-size-text">
                                 <li><i class="fas fa-check-circle mr-2"></i>Admin can organize the events.</li>
                                 <li><i class="fas fa-check-circle mr-2"></i>Events are visible to the users once admin had add the event</li>
                                 <li><i class="fas fa-check-circle mr-2"></i>Admin can able to view the details those who are registered for the events.</li>
                             </ul>
                         </div>
-                        <div class="col-lg-1">
+                        <!-- <div class="col-lg-1">
                             <i class="fas fa-user-shield home-icon-student mt-5"></i>
                             <%=userName%>
-                        </div>
+                        </div> -->
 
                     </div>
             </section>
 
             <!-- Sample out format -->
-            <div class="col-lg-3"></div>
+            <!-- <div class="col-lg-3"></div>
             <section class="home col-lg-9" id="home">
-            </section>
+            </section> -->
 
 
 

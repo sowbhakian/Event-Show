@@ -28,3 +28,20 @@ function messageHide() {
     $("#popupmsgFail").addClass("deactive")
     $("#popupmsgSus").addClass("deactive")
 }
+
+// revomeEvent
+function removeEvent() {
+    alert("Event removed!");
+}
+
+//Admin View Login
+function addAdmin() {
+    $("#userLogin").addClass("deactive")
+    $("#adminLogin").removeClass("deactive")
+}
+
+//User View Login
+function addUser() {
+    $("#adminLogin").addClass("deactive")
+    $("#userLogin").removeClass("deactive")
+}

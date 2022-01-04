@@ -64,7 +64,7 @@
                             <li class="liClsNavBar col-lg-11 border border-dark"><a class="navbarText" href="/">Home</a></li>
                             <li class="liClsNavBar col-lg-11 border border-dark"><a class="navbarText" href="/event">Events</a></li>
                             <li class="liClsNavBar col-lg-11 border border-dark"><a class="navbarText" href="/signin">Sign In</a></li>
-                            <li class="liClsNavBar col-lg-11 border border-dark"><a class="navbarText" href="/admin">Admin</a></li>
+                            <li class="liClsNavBar col-lg-11 border border-dark"><a class="navbarText" href="/adminEvent">Admin</a></li>
                             <li class="liClsNavBar col-lg-11 border border-dark navbarBottom"><a class="navbarText" href="/logout">Log Out</a></li>
                         </ul>
                     </nav>
@@ -90,152 +90,381 @@
         </section> -->
 
         <div class="col-lg-3"></div>
-        <!-- Sign In -->
-        <section class=" col-lg-9 " id="Signin">
-            <!-- Signup -->
-            <section>
-                <div class="welcomeDiv">
-                    <h1 class="welcomeHeading"> Welcome to Event Show!
-                        <i class="far fa-laugh-wink"></i>
-                    </h1>
-                </div>
-                <div id="login" class="login-whole">
 
-                    <div class="card-wrapper">
-                        <div class="card-body card fat container-fluid">
-                            <div class="switch-form">
-                                <div class="row">
-                                    <div id="signupBar" class="col-lg-6 col-md-6 col-sm-6 col-xs-6  switch-bar round-edge-lt white">
-                                        <h6 id="signupTxt" class="switch-text text-decoration-underline" onclick=signup()>Sign up</h6>
+
+        <!-- user view -->
+        <%if(adminLogin == "no"){%>
+            <section class=" col-lg-9 " id="userLogin">
+                <!-- Signup -->
+                <section>
+                    <div class="welcomeDiv">
+                        <h1 class=" text-center AllHeading"> <span class="QuaHead">Welcome to User Login</span>
+                            <i class="far fa-laugh-wink"></i>
+                            <div class=" float-end top-0">
+                                <button type="button" class="btn btn-lg btn-outline-success" onclick="addAdmin()">ADMIN</button>
+                            </div>
+                        </h1>
+
+                        <div class="pl-5 pr-5">
+                            <hr class="text-dark border border-1">
+                        </div>
+                    </div>
+                    <div id="login" class="login-whole">
+
+                        <div class="card-wrapper">
+                            <div class="card-body card fat container-fluid">
+                                <div class="switch-form">
+                                    <div class="row">
+                                        <div id="signupBar" class="col-lg-6 col-md-6 col-sm-6 col-xs-6  switch-bar round-edge-lt white">
+                                            <h6 id="signupTxt" class="switch-text text-decoration-underline" onclick=signup()>Sign up</h6>
+                                        </div>
+                                        <div id="loginBar" class="col-lg-6 col-md-6 col-sm-6 col-xs-6 round-edge switch-bar  round-edge-rt">
+                                            <h6 id="loginTxt" class="switch-text" onclick=login()>Login</h6>
+                                        </div>
                                     </div>
-                                    <div id="loginBar" class="col-lg-6 col-md-6 col-sm-6 col-xs-6 round-edge switch-bar  round-edge-rt">
-                                        <h6 id="loginTxt" class="switch-text" onclick=login()>Login</h6>
+                                </div>
+
+                                <% if(message == "Successfully Signed up!") {%>
+                                    <div class="popup" id="popupmsgSus">
+                                        <button type="button" class="btn btn-success btn-block message_btn" onclick="messageHide()">
+                                    <div class="text-right">
+                                        <i class="far fa-times-circle text-light float-right"></i>
                                     </div>
+                                    Successfully Registered!
+                                </button>
+                                    </div>
+                                    <% } %>
+
+                                        <% if(message == "User-Id already Exist!" || message == "Invalid UserId" || message == "Incorrect Password!") {%>
+                                            <div class="popup" id="popupmsgFail">
+                                                <button type="button" class="btn btn-danger btn-block message_btn" onclick="messageHide()">
+                                    <div class="text-right">
+                                        <i class="far fa-times-circle text-light float-right"></i>
+                                    </div>
+                                            <%= message %>
+                                        </button>
+                                            </div>
+
+                                            <% } %>
+
+                                                <!-- signupForm -->
+                                                <div id="signupForm">
+                                                    <form action="/signup" method="POST" class="my-login-validation">
+                                                        <div class="form-group formTopCls">
+                                                            <label for="name">Name</label>
+                                                            <input type="text" class="form-control" name="name" required autofocus>
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <label for="email">User ID</label>
+                                                            <input type="text" class="form-control" name="email" required>
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <label for="password">Password</label>
+                                                            <input type="password" class="form-control" name="password" required data-eye>
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <label for="ph">Phone No.</label>
+                                                            <input type="number" class="form-control" name="phonenumber" required data-eye>
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <div class="custom-checkbox custom-control">
+                                                                <input type="checkbox" name="agree" id="agree" class="custom-control-input" required="">
+                                                                <label for="agree" class="custom-control-label">I agree to the <a href="#">Terms and Conditions</a></label>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-group m-0">
+                                                            <button type="submit" class="btn btn-primary btn-block btn-index">
+                                        Submit
+                                    </button>
+                                                        </div>
+
+                                                    </form>
+
+                                                </div>
+
+                                                <!-- loginForm -->
+                                                <div id="loginForm" class="deactive">
+                                                    <form action="/login" method="POST" class="my-login-validation" novalidate="">
+
+                                                        <div class="form-group formTopCls">
+                                                            <label for="email">User ID</label>
+                                                            <input type="text" class="form-control" name="email" required>
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <label for="password">Password</label>
+                                                            <input type="password" class="form-control" name="password" required data-eye>
+                                                        </div>
+
+                                                        <div class="form-group m-0">
+                                                            <button type="submit" class="btn btn-primary btn-block btn-index" onclick=login()>
+                                        Login
+                                    </button>
+                                                        </div>
+                                                    </form>
+
+                                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </section>
+            </section>
+            <%}else{%>
+                <section class=" col-lg-9 deactive" id="userLogin">
+                    <!-- Signup -->
+                    <section>
+                        <div class="welcomeDiv">
+                            <h1 class=" text-center AllHeading"> <span class="QuaHead">Welcome to User Login</span>
+                                <i class="far fa-laugh-wink"></i>
+                                <div class=" float-end top-0">
+                                    <button type="button" class="btn btn-lg btn-outline-success" onclick="addAdmin()">ADMIN</button>
+                                </div>
+                            </h1>
+
+                            <div class="pl-5 pr-5">
+                                <hr class="text-dark border border-1">
+                            </div>
+                        </div>
+                        <div id="login" class="login-whole">
+
+                            <div class="card-wrapper">
+                                <div class="card-body card fat container-fluid">
+                                    <div class="switch-form">
+                                        <div class="row">
+                                            <div id="signupBar" class="col-lg-6 col-md-6 col-sm-6 col-xs-6  switch-bar round-edge-lt white">
+                                                <h6 id="signupTxt" class="switch-text text-decoration-underline" onclick=signup()>Sign up</h6>
+                                            </div>
+                                            <div id="loginBar" class="col-lg-6 col-md-6 col-sm-6 col-xs-6 round-edge switch-bar  round-edge-rt">
+                                                <h6 id="loginTxt" class="switch-text" onclick=login()>Login</h6>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <% if(message == "Successfully Signed up!") {%>
+                                        <div class="popup" id="popupmsgSus">
+                                            <button type="button" class="btn btn-success btn-block message_btn" onclick="messageHide()">
+                                    <div class="text-right">
+                                        <i class="far fa-times-circle text-light float-right"></i>
+                                    </div>
+                                    Successfully Registered!
+                                </button>
+                                        </div>
+                                        <% } %>
+
+                                            <% if(message == "User-Id already Exist!" || message == "Invalid UserId" || message == "Incorrect Password!") {%>
+                                                <div class="popup" id="popupmsgFail">
+                                                    <button type="button" class="btn btn-danger btn-block message_btn" onclick="messageHide()">
+                                    <div class="text-right">
+                                        <i class="far fa-times-circle text-light float-right"></i>
+                                    </div>
+                                            <%= message %>
+                                        </button>
+                                                </div>
+
+                                                <% } %>
+
+                                                    <!-- signupForm -->
+                                                    <div id="signupForm">
+                                                        <form action="/signup" method="POST" class="my-login-validation">
+                                                            <div class="form-group formTopCls">
+                                                                <label for="name">Name</label>
+                                                                <input type="text" class="form-control" name="name" required autofocus>
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <label for="email">User ID</label>
+                                                                <input type="text" class="form-control" name="email" required>
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <label for="password">Password</label>
+                                                                <input type="password" class="form-control" name="password" required data-eye>
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <label for="ph">Phone No.</label>
+                                                                <input type="number" class="form-control" name="phonenumber" required data-eye>
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <div class="custom-checkbox custom-control">
+                                                                    <input type="checkbox" name="agree" id="agree" class="custom-control-input" required="">
+                                                                    <label for="agree" class="custom-control-label">I agree to the <a href="#">Terms and Conditions</a></label>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="form-group m-0">
+                                                                <button type="submit" class="btn btn-primary btn-block btn-index">
+                                        Submit
+                                    </button>
+                                                            </div>
+
+                                                        </form>
+
+                                                    </div>
+
+                                                    <!-- loginForm -->
+                                                    <div id="loginForm" class="deactive">
+                                                        <form action="/login" method="POST" class="my-login-validation" novalidate="">
+
+                                                            <div class="form-group formTopCls">
+                                                                <label for="email">User ID</label>
+                                                                <input type="text" class="form-control" name="email" required>
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <label for="password">Password</label>
+                                                                <input type="password" class="form-control" name="password" required data-eye>
+                                                            </div>
+
+                                                            <div class="form-group m-0">
+                                                                <button type="submit" class="btn btn-primary btn-block btn-index" onclick=login()>
+                                        Login
+                                    </button>
+                                                            </div>
+                                                        </form>
+
+                                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </section>
+                </section>
+                <%}%>
+
+                    <!-- admin -->
+                    <%if(adminLogin == "yes"){%>
+                        <section class="home col-lg-9 " id="adminLogin">
+                            <div class="welcomeDiv">
+                                <h1 class=" text-center AllHeading"> <span class="QuaHead">Welcome to Admin Login</span>
+                                    <i class="far fa-laugh-wink"></i>
+                                    <div class=" float-end top-0">
+                                        <button type="button" class="btn btn-lg btn-outline-success" onclick="addUser()">User</button>
+                                    </div>
+                                </h1>
+                                <div class="pl-5 pr-5">
+                                    <hr class="text-dark border border-1">
                                 </div>
                             </div>
 
-                            <% if(message == "Successfully Signed up!") {%>
-                                <div class="popup" id="popupmsgSus">
-                                    <button type="button" class="btn btn-success btn-block message_btn" onclick="messageHide()">
-                                <div class="text-right">
-                                    <i class="far fa-times-circle text-light float-right"></i>
-                                </div>
-                                Successfully Registered!
-                            </button>
-                                </div>
-                                <% } %>
+                            <div id="login" class="login-whole">
 
-                                    <% if(message == "User-Id already Exist!" || message == "Invalid UserId" || message == "Incorrect Password!") {%>
-                                        <div class="popup" id="popupmsgFail">
-                                            <button type="button" class="btn btn-danger btn-block message_btn" onclick="messageHide()">
-                                <div class="text-right">
-                                    <i class="far fa-times-circle text-light float-right"></i>
-                                </div>
-                                        <%= message %>
-                                    </button>
+                                <%if(message == "Incorrect UserID!"){%>
+                                    <div class="alert alert-danger text-center alert-dismissible">
+                                        <a href="#" class="close" data-dismiss="alert" aria-label="close" title="close">×</a>
+                                        <strong><%=message%></strong>
+                                    </div>
+                                    <%}else if(message == "Incorrect Password!"){%>
+                                        <div class="alert alert-danger text-center alert-dismissible">
+                                            <a href="#" class="close" data-dismiss="alert" aria-label="close" title="close">×</a>
+                                            <strong><%=message%></strong>
                                         </div>
+                                        <%}%>
 
-                                        <% } %>
-
-                                            <!-- signupForm -->
-                                            <div id="signupForm">
-                                                <form action="/signup" method="POST" class="my-login-validation">
-                                                    <div class="form-group formTopCls">
-                                                        <label for="name">Name</label>
-                                                        <input type="text" class="form-control" name="name" required autofocus>
+                                            <div class="card-wrapper">
+                                                <div class="card-body card fat container-fluid">
+                                                    <div class="switch-form">
+                                                        <div class=" text-center round-edge-rt">
+                                                            <h6 id="loginTxt" class="switch-text">Login</h6>
+                                                        </div>
                                                     </div>
+                                                </div>
 
-                                                    <div class="form-group">
-                                                        <label for="email">User ID</label>
-                                                        <input type="text" class="form-control" name="email" required>
-                                                    </div>
+                                                <!-- loginForm -->
+                                                <div id="loginForm" class="">
+                                                    <form action="/adminlogin" method="POST" class="my-login-validation" novalidate="">
 
-                                                    <div class="form-group">
-                                                        <label for="password">Password</label>
-                                                        <input type="password" class="form-control" name="password" required data-eye>
-                                                    </div>
+                                                        <div class="form-group formTopCls">
+                                                            <label for="email">User ID</label>
+                                                            <input type="text" class="form-control" name="userId" required>
+                                                        </div>
 
-                                                    <div class="form-group">
-                                                        <label for="ph">Phone No.</label>
-                                                        <input type="number" class="form-control" name="phonenumber" required data-eye>
-                                                    </div>
+                                                        <div class="form-group">
+                                                            <label for="password">Password</label>
+                                                            <input type="password" class="form-control" name="password" required data-eye>
+                                                        </div>
 
-                                                    <div class="form-group">
-                                                        <div class="custom-checkbox custom-control">
-                                                            <input type="checkbox" name="agree" id="agree" class="custom-control-input" required="">
-                                                            <label for="agree" class="custom-control-label">I agree to the <a href="#">Terms and Conditions</a></label>
+                                                        <div class="form-group m-0">
+                                                            <button type="submit" class="btn btn-primary btn-block btn-index">
+                            Login
+                        </button>
+                                                        </div>
+                                                    </form>
+
+                                                </div>
+                                            </div>
+                            </div>
+                        </section>
+                        <%}else{%>
+                            <section class="home col-lg-9 deactive" id="adminLogin">
+                                <div class="welcomeDiv">
+                                    <h1 class=" text-center AllHeading"> <span class="QuaHead">Welcome to Admin Login</span>
+                                        <i class="far fa-laugh-wink"></i>
+                                        <div class=" float-end top-0">
+                                            <button type="button" class="btn btn-lg btn-outline-success" onclick="addUser()">User</button>
+                                        </div>
+                                    </h1>
+                                    <div class="pl-5 pr-5">
+                                        <hr class="text-dark border border-1">
+                                    </div>
+                                </div>
+
+                                <div id="login" class="login-whole">
+
+                                    <%if(message == "Incorrect UserID!"){%>
+                                        <div class="alert alert-danger text-center alert-dismissible">
+                                            <a href="#" class="close" data-dismiss="alert" aria-label="close" title="close">×</a>
+                                            <strong><%=message%></strong>
+                                        </div>
+                                        <%}else if(message == "Incorrect Password!"){%>
+                                            <div class="alert alert-danger text-center alert-dismissible">
+                                                <a href="#" class="close" data-dismiss="alert" aria-label="close" title="close">×</a>
+                                                <strong><%=message%></strong>
+                                            </div>
+                                            <%}%>
+
+                                                <div class="card-wrapper">
+                                                    <div class="card-body card fat container-fluid">
+                                                        <div class="switch-form">
+                                                            <div class=" text-center round-edge-rt">
+                                                                <h6 id="loginTxt" class="switch-text">Login</h6>
+                                                            </div>
                                                         </div>
                                                     </div>
 
-                                                    <div class="form-group m-0">
-                                                        <button type="submit" class="btn btn-primary btn-block btn-index">
-                                    Submit
-                                </button>
+                                                    <!-- loginForm -->
+                                                    <div id="loginForm" class="">
+                                                        <form action="/adminlogin" method="POST" class="my-login-validation" novalidate="">
+
+                                                            <div class="form-group formTopCls">
+                                                                <label for="email">User ID</label>
+                                                                <input type="text" class="form-control" name="userId" required>
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <label for="password">Password</label>
+                                                                <input type="password" class="form-control" name="password" required data-eye>
+                                                            </div>
+
+                                                            <div class="form-group m-0">
+                                                                <button type="submit" class="btn btn-primary btn-block btn-index">
+                            Login
+                        </button>
+                                                            </div>
+                                                        </form>
+
                                                     </div>
-
-                                                </form>
-
-                                            </div>
-
-                                            <!-- loginForm -->
-                                            <div id="loginForm" class="deactive">
-                                                <form action="/login" method="POST" class="my-login-validation" novalidate="">
-
-                                                    <div class="form-group formTopCls">
-                                                        <label for="email">User ID</label>
-                                                        <input type="text" class="form-control" name="email" required>
-                                                    </div>
-
-                                                    <div class="form-group">
-                                                        <label for="password">Password</label>
-                                                        <input type="password" class="form-control" name="password" required data-eye>
-                                                    </div>
-
-                                                    <div class="form-group m-0">
-                                                        <button type="submit" class="btn btn-primary btn-block btn-index" onclick=login()>
-                                    Login
-                                </button>
-                                                    </div>
-                                                </form>
-
-                                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </section>
-        </section>
-
-        <!-- Admin -->
-        <section class="col-lg-9 deactive" id="Admin">
-            <p>Admin</p>
-        </section>
-
-
-
-        <!-- footer -->
-        <div class="col-lg-3"></div>
-        <footer class="col-lg-9" id="contact">
-            <div class="text-center">
-
-                <h5 class="contact">
-                    <a href="#" target="_blank">
-                        <i class="fab fa-github-square fa-2x contactIcons"></i>
-                    </a>
-                    <a href="mailto:sowbhakian.shansan@gmail.com" target="_blank">
-                        <i class="fas fa-envelope fa-2x contactIcons"></i>
-                    </a>
-                    <a href="#" target="_blank">
-                        <i class="fab fa-linkedin fa-2x contactIcons"></i>
-                    </a>
-                    <a href="#" target="_blank">
-                        <i class="fab fa-instagram-square fa-2x contactIcons"></i>
-                    </a>
-
-                </h5>
-                <span class="SowbiName">  <i class="far fa-copyright"></i>  Event Show</span>
-            </div>
-        </footer>
+                                                </div>
+                                </div>
+                            </section>
+                            <%}%>
     </div>
 
 

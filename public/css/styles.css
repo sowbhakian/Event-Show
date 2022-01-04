@@ -170,14 +170,21 @@ a:hover {
     font-family: 'Zilla Slab', serif;
 }
 
-.font-size {
+.font-size-text {
     font-size: 170%;
     font-family: 'Neuton', serif;
     line-height: 70px;
+    margin-left: 20%;
 }
 
 .home-icon-student {
-    font-size: 200px;
+    /* font-size: 100px; */
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
+.home-student-head {
+    /* text-align: center; */
 }
 
 @media screen and (max-width: 430px) {
@@ -382,4 +389,126 @@ a:hover {
 
 .welcomeHeading {
     font-family: 'Secular One';
+}
+
+
+/* Event 1st */
+
+
+/* Qualification */
+
+.QuaHead {
+    color: darkblue;
+}
+
+.card {
+    font-family: 'Bree Serif';
+    color: #000268;
+    background: transparent;
+    box-shadow: 5px 2px 10px rgb(49, 49, 49);
+}
+
+.card:hover {
+    box-shadow: 5px 2px 20px rgb(49, 49, 49);
+}
+
+.cardWhole {
+    text-align: center;
+    padding: 3% 3%;
+}
+
+.cardHeader {
+    font-size: 1.5rem;
+    color: #000000;
+    margin-top: 2%;
+}
+
+.cardBody {
+    text-align: left;
+    margin-left: 10%;
+}
+
+.CardIcons {
+    background-color: white;
+    color: darkblue;
+    padding: 3% 3%;
+    border-radius: 1rem;
+    font-size: larger;
+    background-image: url("https://www.transparenttextures.com/patterns/diamond-eyes.png");
+}
+
+.far {
+    color: darkblue;
+}
+
+.cardText {
+    color: #000268;
+    margin-left: 5%;
+}
+
+.cardList {
+    margin: 5% 0;
+}
+
+.skillEnd {
+    margin-bottom: 5%;
+}
+
+.EventRegsButton {
+    margin-bottom: 2%;
+    text-align: center;
+}
+
+.addButton {
+    color: black;
+}
+
+.addButton:hover {
+    color: rgb(0, 0, 182);
+}
+
+.cardList input {
+    text-align: right;
+}
+
+.modelBackGroung {
+    color: rgb(158, 157, 157);
+    background-image: url("https://www.transparenttextures.com/patterns/diamond-eyes.png");
+}
+
+
+/* Event 2 inner Event */
+
+.event-head {
+    margin-left: 100px;
+}
+
+.event1 {
+    background-image: url("https://www.transparenttextures.com/patterns/diamond-eyes.png");
+    border: rgb(0, 0, 0) solid 1px;
+    box-shadow: 10px 9px 17px -1px rgba(0, 0, 0, 0.83);
+    -webkit-box-shadow: 10px 9px 17px -1px rgba(0, 0, 0, 0.83);
+    -moz-box-shadow: 10px 9px 17px -1px rgba(0, 0, 0, 0.83);
+    border-radius: 15px;
+    transition: transform .2s;
+    margin: 0 4%;
+    color: #000268;
+}
+
+.event1:hover {
+    -ms-transform: scale(1.05);
+    -webkit-transform: scale(1.05);
+    transform: scale(1.05);
+}
+
+.event-style {
+    font-family: 'Sofia', cursive;
+}
+
+.event-head-style {
+    font-family: 'Esteban', serif;
+}
+
+.event-btn {
+    margin-left: 37%;
 }
