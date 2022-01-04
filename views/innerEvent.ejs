@@ -91,7 +91,13 @@
             <section class="home col-lg-9">
                 <div class="row container-fluid">
                     <div class="welcomeDiv">
-                        <h1 class=" text-center AllHeading"> <span class="QuaHead">E-Horizon </span></h1>
+                        <h1 class=" text-center AllHeading"> <span class="QuaHead"><%=eventName%></span>
+                            <div class="float-end">
+                                <a href="/event">
+                                    <button type="button" class="btn btn-info">All Events</button>
+                                </a>
+                            </div>
+                        </h1>
                     </div>
                     <div class="pl-5 pr-5">
                         <hr class="text-dark border border-1">
@@ -100,10 +106,20 @@
                         <h3 class="text-center event-head-style">Paper Presentation</h3>
                         <hr>
                         <div class="row event-style">
-                            <h3 class="ml-3 offset-1 col-lg-5">Start Date : </h3>
-                            <h3 class="ml-3 col-lg-5">End date : </h3>
-                            <h3 class="ml-3 col-lg-5">Organizer : </h3>
-                            <h3 class="ml-3 col-lg-5">City : </h3>
+                            <h3 class="ml-3 offset-1 col-lg-5"><b class="text-dark">Start Date</b> :
+                                <%=outArray[0].startdate%>
+                            </h3>
+                            <h3 class="ml-3 col-lg-5"><b class="text-dark">End date</b> :
+                                <%=outArray[0].enddate%>
+                            </h3>
+                            <h3 class="ml-3 col-lg-5"><b class="text-dark">Description</b> :
+                                <p>
+                                    <%=outArray[0].eventDescription%>
+                                </p>
+                            </h3>
+                            <h3 class="ml-3 col-lg-5"><b class="text-dark">City</b> :
+                                <%=outArray[0].state%>
+                            </h3>
                         </div>
                         <button type="button" class="btn btn-outline-success btn-lg event-btn mt-2 mb-3" data-toggle="modal" data-target="#form-Modal-PPT">Register<i class="fas fa-angle-double-right ml-1"></i></button>
                     </div>
@@ -111,10 +127,20 @@
                         <h3 class="text-center event-head-style">Project Presentation</h3>
                         <hr>
                         <div class="row event-style">
-                            <h3 class="ml-3 offset-1 col-lg-5">Start Date : </h3>
-                            <h3 class="ml-3 col-lg-5">End date : </h3>
-                            <h3 class="ml-3 col-lg-5">Organizer : </h3>
-                            <h3 class="ml-3 col-lg-5">City : </h3>
+                            <h3 class="ml-3 offset-1 col-lg-5"><b class="text-dark">Start Date</b> :
+                                <%=outArray[0].startdate%>
+                            </h3>
+                            <h3 class="ml-3 col-lg-5"><b class="text-dark">End date</b> :
+                                <%=outArray[0].enddate%>
+                            </h3>
+                            <h3 class="ml-3 col-lg-5"><b class="text-dark">Description</b> :
+                                <p>
+                                    <%=outArray[0].eventDescription%>
+                                </p>
+                            </h3>
+                            <h3 class="ml-3 col-lg-5"><b class="text-dark">City</b> :
+                                <%=outArray[0].state%>
+                            </h3>
                         </div>
                         <button type="button" class="btn btn-outline-success btn-lg event-btn mt-2 mb-3" data-toggle="modal" data-target="#form-Modal-PRO">Register<i class="fas fa-angle-double-right ml-1"></i></button>
                     </div>
@@ -122,10 +148,20 @@
                         <h3 class="text-center event-head-style">Ideathon</h3>
                         <hr>
                         <div class="row event-style">
-                            <h3 class="ml-3 offset-1 col-lg-5">Start Date : </h3>
-                            <h3 class="ml-3 col-lg-5">End date : </h3>
-                            <h3 class="ml-3 col-lg-5">Organizer : </h3>
-                            <h3 class="ml-3 col-lg-5">City : </h3>
+                            <h3 class="ml-3 offset-1 col-lg-5"><b class="text-dark">Start Date</b> :
+                                <%=outArray[0].startdate%>
+                            </h3>
+                            <h3 class="ml-3 col-lg-5"><b class="text-dark">End date</b> :
+                                <%=outArray[0].enddate%>
+                            </h3>
+                            <h3 class="ml-3 col-lg-5"><b class="text-dark">Description</b> :
+                                <p>
+                                    <%=outArray[0].eventDescription%>
+                                </p>
+                            </h3>
+                            <h3 class="ml-3 col-lg-5"><b class="text-dark">City</b> :
+                                <%=outArray[0].state%>
+                            </h3>
                         </div>
                         <button type="button" class="btn btn-outline-success btn-lg event-btn mt-2 mb-3" data-toggle="modal" data-target="#form-Modal-IDE">Register<i class="fas fa-angle-double-right ml-1"></i></button>
                     </div>
@@ -229,6 +265,7 @@
                                                     </span>
                                             </div>
                                             <input type="hidden" name="topic" value="PPT">
+                                            <input type="hidden" name="eventName" value="<%=eventName%>">
 
                                             <div class="EventRegsButton">
                                                 <button type="submit" class="btn btn-outline-success">Add</button>
@@ -289,7 +326,7 @@
                                                     </span>
                                             </div>
                                             <input type="hidden" name="topic" value="PRO">
-
+                                            <input type="hidden" name="eventName" value="<%=eventName%>">
                                             <div class="EventRegsButton">
                                                 <button type="submit" class="btn btn-outline-success">Add</button>
                                             </div>
@@ -349,7 +386,7 @@
                                                     </span>
                                             </div>
                                             <input type="hidden" name="topic" value="IDEA">
-
+                                            <input type="hidden" name="eventName" value="<%=eventName%>">
                                             <div class="EventRegsButton">
                                                 <button type="submit" class="btn btn-outline-success">Add</button>
                                             </div>

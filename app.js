@@ -22,25 +22,10 @@ const LoginSchema = new mongoose.Schema({
 });
 const LoginVar = mongoose.model("login", LoginSchema) //Collection-1
 
-//List Of Event - ADMIN added/remove
-const ListOfEventSchema = new mongoose.Schema({
-    clgname: String,
-    eventname: String,
-    startdate: String,
-    enddate: String,
-    state: String,
-    medium: String
-});
-const ListOfEvent = mongoose.model("listofevents", ListOfEventSchema) //Collection-2
-
-app.get("/", function(req, res) {
-    res.render("index", { userName: userName });
-});
-
 // ppt Events Common
 const PptSchema = new mongoose.Schema({
     name: String,
-    rollno: Number,
+    rollno: String,
     mailid: String,
     phno: Number
 });
@@ -49,7 +34,7 @@ const Ppt = mongoose.model("ppt", PptSchema) //Collection-3
 // project Events Common
 const ProjectSchema = new mongoose.Schema({
     name: String,
-    rollno: Number,
+    rollno: String,
     mailid: String,
     phno: Number
 });
@@ -58,14 +43,34 @@ const Project = mongoose.model("project", ProjectSchema) //Collection-4
 // ideathon Events Common
 const IdeathonSchema = new mongoose.Schema({
     name: String,
-    rollno: Number,
+    rollno: String,
     mailid: String,
     phno: Number
 });
 const Ideathon = mongoose.model("ideathon", IdeathonSchema) //Collection-5
 
+//List Of Event - ADMIN added/remove
+const ListOfEventSchema = new mongoose.Schema({
+    clgname: String,
+    eventname: String,
+    regdate: String,
+    startdate: String,
+    enddate: String,
+    state: String,
+    medium: String,
+    eventDescription: String,
+    ppt: [{ type: mongoose.Schema.Types.ObjectId, ref: 'ppt' }],
+    project: [{ type: mongoose.Schema.Types.ObjectId, ref: 'project' }],
+    ideathon: [{ type: mongoose.Schema.Types.ObjectId, ref: 'ideathon' }]
+});
+const ListOfEvent = mongoose.model("listofevents", ListOfEventSchema) //Collection-2
 
 
+app.get("/", function(req, res) {
+    res.render("index", { userName: userName });
+});
+
+//  SIGNIN | LOGIN
 app.get("/signin", function(req, res) {
     res.render("signin", { userName: userName, message: "", adminLogin: "no" });
 });
@@ -139,6 +144,65 @@ app.post("/login", function(req, res) {
 
 
 
+// EVENTS
+app.get("/event", function(req, res) {
+
+    if (userName != "") {
+        ListOfEvent.find({}, (err, outArray) => {
+            if (!err) {
+                res.render("event", { userName: userName, ListOfEvent: outArray });
+            }
+        })
+    } else {
+        res.redirect("/signin");
+    }
+
+});
+app.post("/innerMoveEvent", function(req, res) {
+    var eventName = req.body.eventName;
+    ListOfEvent.find({ eventName: eventName }, (err, outArray) => {
+        if (!err) {
+            console.log(outArray);
+            console.log(outArray.startdate);
+            res.render("innerEvent", { userName: userName, eventName: eventName, outArray: outArray });
+        }
+    })
+
+});
+
+
+// ADMIN
+app.post("/adminlogin", function(req, res) {
+    var userId = req.body.userId;
+    var password = req.body.password;
+    if (userId == "admin") {
+        if (password == "admin") {
+            res.redirect("/adminEvent");
+            AdminName = "Admin"
+        } else {
+            res.render("signin", { userName: userName, message: "Incorrect Password!", adminLogin: "yes" });
+        }
+    } else {
+        res.render("signin", { userName: userName, message: "Incorrect UserID!", adminLogin: "yes" });
+    }
+});
+app.get("/enrollmentView", function(req, res) {
+    if (AdminName != "") {
+        res.render("enrollmentView", { userName: userName });
+    } else {
+        res.redirect("/signin");
+    }
+});
+app.post("/enrollmentView", function(req, res) {
+    var eventName = req.body.eventName
+    ListOfEvent.find({ eventName: eventName }).populate('ppt').exec((err, outArray) => {
+        if (!err) {
+            // to be continue here
+            console.log(outArray[0].ppt[0]);
+            res.render("enrollmentView", { eventName: eventName, outArray: outArray });
+        }
+    })
+});
 app.get("/adminEvent", function(req, res) {
 
     if (AdminName != "") {
@@ -152,23 +216,26 @@ app.get("/adminEvent", function(req, res) {
     }
 
 });
-
 app.post("/adminEventAdd", function(req, res) {
     var clgname = req.body.clgname
     var eventname = req.body.eventname
+    var regdate = req.body.regdate
     var startdate = req.body.startdate
     var enddate = req.body.enddate
     var state = req.body.state
     var medium = req.body.medium
+    var eventDescription = req.body.eventDescription
     var ch = false;
     //Saves to DB
     const eventToAdd = new ListOfEvent({
         clgname: clgname,
         eventname: eventname,
+        regdate: regdate,
         startdate: startdate,
         enddate: enddate,
         state: state,
-        medium: medium
+        medium: medium,
+        eventDescription: eventDescription
     })
 
     // Checks Event Name
@@ -195,8 +262,6 @@ app.post("/adminEventAdd", function(req, res) {
         }
     })
 });
-
-
 app.post("/removeEvent", function(req, res) {
     var eventName = req.body.eventName
 
@@ -212,58 +277,6 @@ app.post("/removeEvent", function(req, res) {
 
 });
 
-app.get("/event", function(req, res) {
-
-    if (userName != "") {
-        ListOfEvent.find({}, (err, outArray) => {
-            if (!err) {
-                res.render("event", { userName: userName, ListOfEvent: outArray });
-            }
-        })
-    } else {
-        res.redirect("/signin");
-    }
-
-});
-
-app.post("/innerMoveEvent", function(req, res) {
-    var eventName = req.body.eventName;
-    res.render("innerEvent", { userName: userName });
-});
-
-
-app.post("/adminlogin", function(req, res) {
-    var userId = req.body.userId;
-    var password = req.body.password;
-    if (userId == "admin") {
-        if (password == "admin") {
-            res.redirect("/adminEvent");
-            AdminName = "Admin"
-        } else {
-            res.render("signin", { userName: userName, message: "Incorrect Password!", adminLogin: "yes" });
-        }
-    } else {
-        res.render("signin", { userName: userName, message: "Incorrect UserID!", adminLogin: "yes" });
-    }
-});
-
-
-app.get("/innerEvent", function(req, res) {
-    if (userName != "") {
-        res.render("innerEvent", { userName: userName });
-    } else {
-        res.redirect("/signin")
-    }
-});
-
-app.get("/enrollmentView", function(req, res) {
-    if (AdminName != "") {
-        res.render("enrollmentView", { userName: userName });
-    } else {
-        res.redirect("/signin");
-    }
-});
-
 
 // PPT PRO IDE - POST
 app.post("/ppt", function(req, res) {
@@ -271,54 +284,95 @@ app.post("/ppt", function(req, res) {
     var rollno = req.body.rollno
     var mailid = req.body.email
     var phno = req.body.phone
-        // save to db
-    const ppt = new Ppt({
-        name: name,
-        rollno: rollno,
-        mailid: mailid,
-        phno: phno
-    })
-    ppt.save((err) => {
+    var eventName = req.body.eventName
+    ListOfEvent.findOne({ eventname: eventName }).populate('ppt').exec((err, foundUser) => {
+
         if (!err) {
-            res.redirect("/innerEvent");
+            const addpptEvent = new Ppt({
+                name: name,
+                rollno: rollno,
+                mailid: mailid,
+                phno: phno
+            });
+
+            // ListOfEvent push and Save
+            foundUser.ppt.push(addpptEvent);
+            foundUser.save();
+
+            // Save the ppt details
+            addpptEvent.save((err) => {
+                res.redirect("/event");
+            });
+
+        } else {
+            res.redirect("/event");
         }
-    })
+    });
+
 });
+
 app.post("/project", function(req, res) {
     var name = req.body.name
     var rollno = req.body.rollno
     var mailid = req.body.email
     var phno = req.body.phone
-        // save to db
-    const project = new Project({
-        name: name,
-        rollno: rollno,
-        mailid: mailid,
-        phno: phno
-    })
-    project.save((err) => {
+    var eventName = req.body.eventName
+    console.log(eventName);
+    ListOfEvent.findOne({ eventname: eventName }).populate('project').exec((err, foundUser) => {
+
         if (!err) {
-            res.redirect("/innerEvent");
+            const addProjectEvent = new Project({
+                name: name,
+                rollno: rollno,
+                mailid: mailid,
+                phno: phno
+            });
+
+            // ListOfEvent push and Save
+            foundUser.ppt.push(addProjectEvent);
+            foundUser.save();
+
+            // Save the ppt details
+            addProjectEvent.save((err) => {
+                res.redirect("/event");
+            });
+
+        } else {
+            res.redirect("/event");
         }
-    })
+    });
+
 });
 app.post("/ideathon", function(req, res) {
     var name = req.body.name
     var rollno = req.body.rollno
     var mailid = req.body.email
     var phno = req.body.phone
-        // save to db
-    const ideathon = new Ideathon({
-        name: name,
-        rollno: rollno,
-        mailid: mailid,
-        phno: phno
-    })
-    ideathon.save((err) => {
+    var eventName = req.body.eventName
+    ListOfEvent.findOne({ eventname: eventName }).populate('ideathon').exec((err, foundUser) => {
+
         if (!err) {
-            res.redirect("/innerEvent");
+            const addIdeathonEvent = new Ideathon({
+                name: name,
+                rollno: rollno,
+                mailid: mailid,
+                phno: phno
+            });
+
+            // ListOfEvent push and Save
+            foundUser.ppt.push(addIdeathonEvent);
+            foundUser.save();
+
+            // Save the ppt details
+            addIdeathonEvent.save((err) => {
+                res.redirect("/event");
+            });
+
+        } else {
+            res.redirect("/event");
         }
-    })
+    });
+
 });
 
 

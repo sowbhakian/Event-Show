@@ -144,6 +144,15 @@
                                                     <div class="cardList ">
                                                         <i class="fas fa-envelope-open-text CardIcons "></i> <span class="cardText "> <u>Medium</u> - <%=e.medium%></span>
                                                     </div>
+
+                                                    <div class="EventRegsButton ">
+                                                        <form action="/enrollmentView" method="post">
+                                                            <input type="hidden" name="eventName" value="<%=e.eventname%>">
+                                                            <button type="submit" class="btn btn-outline-primary">View Participants</button>
+                                                        </form>
+                                                    </div>
+
+
                                                 </div>
                                             </div>
                                         </div>

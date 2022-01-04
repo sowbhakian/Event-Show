@@ -63,6 +63,21 @@ a:hover {
     font-family: 'Pacifico';
     margin-top: 10%;
     color: rgb(255, 198, 77);
+    transition: transform .2s;
+}
+
+
+/* animation */
+
+.animate__animated.animate__fadeInRight,
+.animate__animated.animate__fadeInLeft {
+    --animate-duration: 2s;
+}
+
+.name:hover {
+    -ms-transform: scale(1.05);
+    -webkit-transform: scale(1.05);
+    transform: scale(1.35);
 }
 
 .name2 {
