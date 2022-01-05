@@ -3,6 +3,9 @@ const mongoose = require("mongoose");
 const _ = require('lodash');
 const { redirect } = require("express/lib/response");
 const app = express();
+//date
+const date = require("./date");
+// console.log(date.check("2001-11-1", "2001-11-2", "2000-1-1"));
 
 app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: true }))
@@ -65,7 +68,7 @@ const ListOfEventSchema = new mongoose.Schema({
 });
 const ListOfEvent = mongoose.model("listofevents", ListOfEventSchema) //Collection-2
 
-
+// Home
 app.get("/", function(req, res) {
     res.render("index", { userName: userName });
 });
@@ -162,9 +165,7 @@ app.post("/innerMoveEvent", function(req, res) {
     var eventName = req.body.eventName;
     ListOfEvent.find({ eventName: eventName }, (err, outArray) => {
         if (!err) {
-            console.log(outArray);
-            console.log(outArray.startdate);
-            res.render("innerEvent", { userName: userName, eventName: eventName, outArray: outArray });
+            res.render("innerEvent", { userName: userName, eventName: eventName, outArray: outArray, message: "" });
         }
     })
 
@@ -186,20 +187,19 @@ app.post("/adminlogin", function(req, res) {
         res.render("signin", { userName: userName, message: "Incorrect UserID!", adminLogin: "yes" });
     }
 });
-app.get("/enrollmentView", function(req, res) {
-    if (AdminName != "") {
-        res.render("enrollmentView", { userName: userName });
-    } else {
-        res.redirect("/signin");
-    }
-});
 app.post("/enrollmentView", function(req, res) {
     var eventName = req.body.eventName
-    ListOfEvent.find({ eventName: eventName }).populate('ppt').exec((err, outArray) => {
-        if (!err) {
-            // to be continue here
-            console.log(outArray[0].ppt[0]);
-            res.render("enrollmentView", { eventName: eventName, outArray: outArray });
+    var pptvar = [];
+    var projectvar = [];
+    var ideathonvar = [];
+    ListOfEvent.find({ eventname: eventName }).populate('ppt').populate('project').populate('ideathon').exec((err1, outArray1) => {
+        if (!err1) {
+            pptvar = outArray1[0].ppt;
+            projectvar = outArray1[0].project;
+            ideathonvar = outArray1[0].ideathon;
+            console.log(projectvar)
+
+            res.render("enrollmentView", { eventName: eventName, pptvar: pptvar, projectvar: projectvar, ideathonvar: ideathonvar, startDate: outArray1[0].startdate, endDate: outArray1[0].enddate, clgName: outArray1[0].clgname, c: 1 });
         }
     })
 });
@@ -219,48 +219,57 @@ app.get("/adminEvent", function(req, res) {
 app.post("/adminEventAdd", function(req, res) {
     var clgname = req.body.clgname
     var eventname = req.body.eventname
-    var regdate = req.body.regdate
+    var regdate = req.body.registrationdate
     var startdate = req.body.startdate
     var enddate = req.body.enddate
     var state = req.body.state
     var medium = req.body.medium
     var eventDescription = req.body.eventDescription
-    var ch = false;
-    //Saves to DB
-    const eventToAdd = new ListOfEvent({
-        clgname: clgname,
-        eventname: eventname,
-        regdate: regdate,
-        startdate: startdate,
-        enddate: enddate,
-        state: state,
-        medium: medium,
-        eventDescription: eventDescription
-    })
+    var result = date.check(startdate, enddate, regdate); //date
+    if (result) {
 
-    // Checks Event Name
-    ListOfEvent.find({ eventname: eventname }, (err, outArray) => {
-        if (!err) {
-            // console.log(outArray);
-            if (outArray.length != 0) {
-                ListOfEvent.find({}, (err, outArray) => {
-                    if (!err) {
-                        res.render("adminevent", { userName: userName, ListOfEvent: outArray, message: "Event Name Already Exits!", AdminName: AdminName });
-                    }
-                })
-            } else {
-                eventToAdd.save((err) => {
-                    if (!err) {
-                        ListOfEvent.find({}, (err, outArray) => {
-                            if (!err) {
-                                res.render("adminEvent", { userName: userName, ListOfEvent: outArray, message: "Event Registered Successfully!", AdminName: AdminName });
-                            }
-                        })
-                    }
-                })
+        //Saves to DB
+        const eventToAdd = new ListOfEvent({
+            clgname: clgname,
+            eventname: eventname,
+            regdate: regdate,
+            startdate: startdate,
+            enddate: enddate,
+            state: state,
+            medium: medium,
+            eventDescription: eventDescription
+        })
+
+        // Checks Event Name
+        ListOfEvent.find({ eventname: eventname }, (err, outArray) => {
+            if (!err) {
+                // console.log(outArray);
+                if (outArray.length != 0) {
+                    ListOfEvent.find({}, (err, outArray) => {
+                        if (!err) {
+                            res.render("adminevent", { userName: userName, ListOfEvent: outArray, message: "Event Name Already Exits!", AdminName: AdminName });
+                        }
+                    })
+                } else {
+                    eventToAdd.save((err) => {
+                        if (!err) {
+                            ListOfEvent.find({}, (err, outArray) => {
+                                if (!err) {
+                                    res.render("adminEvent", { userName: userName, ListOfEvent: outArray, message: "Event Registered Successfully!", AdminName: AdminName });
+                                }
+                            })
+                        }
+                    })
+                }
             }
-        }
-    })
+        })
+    } else {
+        ListOfEvent.find({}, (err, outArray) => {
+            if (!err) {
+                res.render("adminEvent", { userName: userName, ListOfEvent: outArray, message: "Registration Date must be Close Before the Start of the event!", AdminName: AdminName });
+            }
+        })
+    }
 });
 app.post("/removeEvent", function(req, res) {
     var eventName = req.body.eventName
@@ -301,7 +310,12 @@ app.post("/ppt", function(req, res) {
 
             // Save the ppt details
             addpptEvent.save((err) => {
-                res.redirect("/event");
+                // res.redirect("/event");
+                ListOfEvent.find({ eventName: eventName }, (err, outArray) => {
+                    if (!err) {
+                        res.render("innerEvent", { userName: userName, eventName: eventName, outArray: outArray, message: "Event Registered Successful!" });
+                    }
+                })
             });
 
         } else {
@@ -317,7 +331,7 @@ app.post("/project", function(req, res) {
     var mailid = req.body.email
     var phno = req.body.phone
     var eventName = req.body.eventName
-    console.log(eventName);
+        // console.log(eventName);
     ListOfEvent.findOne({ eventname: eventName }).populate('project').exec((err, foundUser) => {
 
         if (!err) {
@@ -329,12 +343,16 @@ app.post("/project", function(req, res) {
             });
 
             // ListOfEvent push and Save
-            foundUser.ppt.push(addProjectEvent);
+            foundUser.project.push(addProjectEvent);
             foundUser.save();
 
             // Save the ppt details
             addProjectEvent.save((err) => {
-                res.redirect("/event");
+                ListOfEvent.find({ eventName: eventName }, (err, outArray) => {
+                    if (!err) {
+                        res.render("innerEvent", { userName: userName, eventName: eventName, outArray: outArray, message: "Event Registered Successful!" });
+                    }
+                })
             });
 
         } else {
@@ -360,12 +378,16 @@ app.post("/ideathon", function(req, res) {
             });
 
             // ListOfEvent push and Save
-            foundUser.ppt.push(addIdeathonEvent);
+            foundUser.ideathon.push(addIdeathonEvent);
             foundUser.save();
 
             // Save the ppt details
             addIdeathonEvent.save((err) => {
-                res.redirect("/event");
+                ListOfEvent.find({ eventName: eventName }, (err, outArray) => {
+                    if (!err) {
+                        res.render("innerEvent", { userName: userName, eventName: eventName, outArray: outArray, message: "Event Registered Successful!" });
+                    }
+                })
             });
 
         } else {

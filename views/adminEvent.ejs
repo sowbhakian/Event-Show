@@ -61,7 +61,7 @@
                     <nav class="navbar ">
                         <ul class="row">
                             <li class="liClsNavBar col-lg-11 border border-dark"><a class="navbarText" href="/">Home</a></li>
-                            <li class="liClsNavBar col-lg-11 border border-dark"><a class="navbarText" href="/event">Events</a></li>
+                            <li class="liClsNavBar col-lg-11 border border-dark"><a class="navbarText" href="/adminEvent">Events</a></li>
                             <li class="liClsNavBar col-lg-11 border border-dark"><a class="navbarText" href="/signin">Sign In</a></li>
                             <li class="liClsNavBar col-lg-11 border border-dark"><a class="navbarText" href="#">Admin</a></li>
                             <li class="liClsNavBar col-lg-11 border border-dark navbarBottom"><a class="navbarText" href="/logout">Log Out</a></li>
@@ -114,53 +114,53 @@
                                 <a href="#" class="close" data-dismiss="alert" aria-label="close" title="close">×</a>
                                 <strong><%=message%></strong>
                             </div>
-                            <%}%>
+                            <%}else if(message == "Registration Date must be Close Before the Start of the event!"){%>
+                                <div class="alert alert-danger text-center alert-dismissible">
+                                    <a href="#" class="close" data-dismiss="alert" aria-label="close" title="close">×</a>
+                                    <strong><%=message%></strong>
+                                </div>
+                                <%}%>
 
 
-                                <!-- Main Event-->
-                                <div class="row">
-                                    <% ListOfEvent.forEach((e)=>{ %>
-                                        <div class="col-lg-6 col-md-6 cardWhole">
-                                            <div class="card">
-                                                <div class="cardHeader">
-                                                    <%=e.clgname%>
-                                                        <form action="/removeEvent" method="post">
-                                                            <input type="hidden" name="eventName" value="<%=e.eventname%>">
-                                                            <!-- <i class="fas fa-calendar-minus fa-2x text-danger" type="submit"></i> -->
-                                                            <button type="submit " class="btn btn-danger " onclick="removeEvent() ">Remove</button>
-                                                        </form>
-                                                        <hr>
-                                                </div>
-
-                                                <div class="cardBody ">
-                                                    <div class="cardList ">
-                                                        <i class="fas fa-school CardIcons "></i> <span class="cardText "> <u>Event Name</u> - <%=e.eventname%></span>
+                                    <!-- Main Event-->
+                                    <div class="row">
+                                        <% ListOfEvent.forEach((e)=>{ %>
+                                            <div class="col-lg-6 col-md-6 cardWhole">
+                                                <div class="card">
+                                                    <div class="cardHeader">
+                                                        <%=e.clgname%>
+                                                            <form action="/removeEvent" method="post">
+                                                                <input type="hidden" name="eventName" value="<%=e.eventname%>">
+                                                                <!-- <i class="fas fa-calendar-minus fa-2x text-danger" type="submit"></i> -->
+                                                                <button type="submit " class="btn btn-danger " onclick="removeEvent() ">Remove</button>
+                                                            </form>
+                                                            <hr>
                                                     </div>
 
-                                                    <div class="cardList ">
-                                                        <i class="far fa-clock CardIcons "></i> <span class="cardText "> <u>Due Date</u> - <%=e.startdate%> </span>
+                                                    <div class="cardBody ">
+                                                        <div class="cardList ">
+                                                            <i class="fas fa-school CardIcons "></i> <span class="cardText "> <u>Event Name</u> - <%=e.eventname%></span>
+                                                        </div>
+
+                                                        <div class="cardList ">
+                                                            <i class="far fa-clock CardIcons "></i> <span class="cardText "> <u>Due Date</u> - <%=e.startdate%> </span>
+                                                        </div>
+
+                                                        <div class="cardList ">
+                                                            <i class="fas fa-envelope-open-text CardIcons "></i> <span class="cardText "> <u>Medium</u> - <%=e.medium%></span>
+                                                        </div>
+
+                                                        <div class="EventRegsButton ">
+                                                            <form action="/enrollmentView" method="post">
+                                                                <input type="hidden" name="eventName" value="<%=e.eventname%>">
+                                                                <button type="submit" class="btn btn-outline-primary">View Participants</button>
+                                                            </form>
+                                                        </div>
                                                     </div>
-
-                                                    <div class="cardList ">
-                                                        <i class="fas fa-envelope-open-text CardIcons "></i> <span class="cardText "> <u>Medium</u> - <%=e.medium%></span>
-                                                    </div>
-
-                                                    <div class="EventRegsButton ">
-                                                        <form action="/enrollmentView" method="post">
-                                                            <input type="hidden" name="eventName" value="<%=e.eventname%>">
-                                                            <button type="submit" class="btn btn-outline-primary">View Participants</button>
-                                                        </form>
-                                                    </div>
-
-
                                                 </div>
                                             </div>
-                                        </div>
-                                        <% }) %>
-                                </div>
-
-
-
+                                            <% }) %>
+                                    </div>
             </section>
         </div>
     </div>

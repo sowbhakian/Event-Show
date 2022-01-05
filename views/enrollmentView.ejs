@@ -70,6 +70,12 @@
 
 <body class="wholeBody">
     <h1 class=" AllHeading text-center" style="margin-top: 2%;">Enrollment List
+        <a href="/adminEvent">
+            <div class="EventRegsButton">
+                <button type="button" class="btn btn-outline-primary">View Events</button>
+            </div>
+        </a>
+
     </h1>
 
     <hr>
@@ -79,57 +85,120 @@
             <th>S.No</th>
             <th>Name</th>
             <th>Roll No</th>
+            <th>Mail ID</th>
             <th>College Name</th>
             <th>Start Date</th>
             <th>End Date</th>
         </tr>
-        <tr>
-            <td>1</td>
-            <td>saran</td>
-            <td>178</td>
-            <td>kongu</td>
-            <td>14-03-2022</td>
-            <td>14-03-2022</td>
-        </tr>
+
+        <% pptvar.forEach((e)=>{ %>
+            <tr>
+                <td>
+                    <%= ++c%>
+                </td>
+                <td>
+                    <%=e.name%>
+                </td>
+                <td>
+                    <%=e.rollno%>
+                </td>
+                <td>
+                    <%=e.mailid%>
+                </td>
+                <td>
+                    <%=clgName%>
+                </td>
+                <td>
+                    <%=startDate%>
+                </td>
+                <td>
+                    <%=endDate%>
+                </td>
+                <% }) %>
+            </tr>
     </table>
-    <h2 class="welcomeDiv">Project Presentation</h2>
-    <table>
-        <tr>
-            <th>S.No</th>
-            <th>Name</th>
-            <th>Roll No</th>
-            <th>College Name</th>
-            <th>Start Date</th>
-            <th>End Date</th>
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>Kumar</td>
-            <td>179</td>
-            <td>kongu</td>
-            <td>14-03-2022</td>
-            <td>14-03-2022</td>
-        </tr>
-    </table>
-    <h2 class="welcomeDiv">Ideathon</h2>
-    <table>
-        <tr>
-            <th>S.No</th>
-            <th>Name</th>
-            <th>Roll No</th>
-            <th>College Name</th>
-            <th>Start Date</th>
-            <th>End Date</th>
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>Sowbi</td>
-            <td>189</td>
-            <td>kongu</td>
-            <td>14-03-2022</td>
-            <td>14-03-2022</td>
-        </tr>
-    </table>
+
+    <%c=0%>
+        <h2 class="welcomeDiv">Project Presentation</h2>
+        <table>
+            <tr>
+                <th>S.No</th>
+                <th>Name</th>
+                <th>Roll No</th>
+                <th>Mail ID</th>
+                <th>College Name</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+            </tr>
+
+            <% projectvar.forEach((e)=>{ %>
+                <tr>
+                    <td>
+                        <%= ++c%>
+                    </td>
+                    <td>
+                        <%=e.name%>
+                    </td>
+                    <td>
+                        <%=e.rollno%>
+                    </td>
+                    <td>
+                        <%=e.mailid%>
+                    </td>
+                    <td>
+                        <%=clgName%>
+                    </td>
+                    <td>
+                        <%=startDate%>
+                    </td>
+                    <td>
+                        <%=endDate%>
+                    </td>
+                    <% }) %>
+                </tr>
+        </table>
+
+
+        <%c=0%>
+            <h2 class="welcomeDiv">Ideathon</h2>
+            <table>
+                <tr>
+                    <th>S.No</th>
+                    <th>Name</th>
+                    <th>Roll No</th>
+                    <th>Mail ID</th>
+                    <th>College Name</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                </tr>
+
+                <% ideathonvar.forEach((e)=>{ %>
+                    <tr>
+                        <td>
+                            <%= ++c%>
+                        </td>
+                        <td>
+                            <%=e.name%>
+                        </td>
+                        <td>
+                            <%=e.rollno%>
+                        </td>
+                        <td>
+                            <%=e.mailid%>
+                        </td>
+                        <td>
+                            <%=clgName%>
+                        </td>
+                        <td>
+                            <%=startDate%>
+                        </td>
+                        <td>
+                            <%=endDate%>
+                        </td>
+                        <% }) %>
+                    </tr>
+            </table>
+
 </body>
 </body>
 

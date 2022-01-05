@@ -102,69 +102,77 @@
                     <div class="pl-5 pr-5">
                         <hr class="text-dark border border-1">
                     </div>
-                    <div class="event1 mt-5">
-                        <h3 class="text-center event-head-style">Paper Presentation</h3>
-                        <hr>
-                        <div class="row event-style">
-                            <h3 class="ml-3 offset-1 col-lg-5"><b class="text-dark">Start Date</b> :
-                                <%=outArray[0].startdate%>
-                            </h3>
-                            <h3 class="ml-3 col-lg-5"><b class="text-dark">End date</b> :
-                                <%=outArray[0].enddate%>
-                            </h3>
-                            <h3 class="ml-3 col-lg-5"><b class="text-dark">Description</b> :
-                                <p>
-                                    <%=outArray[0].eventDescription%>
-                                </p>
-                            </h3>
-                            <h3 class="ml-3 col-lg-5"><b class="text-dark">City</b> :
-                                <%=outArray[0].state%>
-                            </h3>
+
+                    <% if(message == "Event Registered Successful!"){%>
+                        <div class="alert alert-success text-center alert-dismissible">
+                            <a href="#" class="close" data-dismiss="alert" aria-label="close" title="close">×</a>
+                            <strong><%=message%></strong>
                         </div>
-                        <button type="button" class="btn btn-outline-success btn-lg event-btn mt-2 mb-3" data-toggle="modal" data-target="#form-Modal-PPT">Register<i class="fas fa-angle-double-right ml-1"></i></button>
-                    </div>
-                    <div class="event1 mt-5">
-                        <h3 class="text-center event-head-style">Project Presentation</h3>
-                        <hr>
-                        <div class="row event-style">
-                            <h3 class="ml-3 offset-1 col-lg-5"><b class="text-dark">Start Date</b> :
-                                <%=outArray[0].startdate%>
-                            </h3>
-                            <h3 class="ml-3 col-lg-5"><b class="text-dark">End date</b> :
-                                <%=outArray[0].enddate%>
-                            </h3>
-                            <h3 class="ml-3 col-lg-5"><b class="text-dark">Description</b> :
-                                <p>
-                                    <%=outArray[0].eventDescription%>
-                                </p>
-                            </h3>
-                            <h3 class="ml-3 col-lg-5"><b class="text-dark">City</b> :
-                                <%=outArray[0].state%>
-                            </h3>
-                        </div>
-                        <button type="button" class="btn btn-outline-success btn-lg event-btn mt-2 mb-3" data-toggle="modal" data-target="#form-Modal-PRO">Register<i class="fas fa-angle-double-right ml-1"></i></button>
-                    </div>
-                    <div class="event1 mt-5">
-                        <h3 class="text-center event-head-style">Ideathon</h3>
-                        <hr>
-                        <div class="row event-style">
-                            <h3 class="ml-3 offset-1 col-lg-5"><b class="text-dark">Start Date</b> :
-                                <%=outArray[0].startdate%>
-                            </h3>
-                            <h3 class="ml-3 col-lg-5"><b class="text-dark">End date</b> :
-                                <%=outArray[0].enddate%>
-                            </h3>
-                            <h3 class="ml-3 col-lg-5"><b class="text-dark">Description</b> :
-                                <p>
-                                    <%=outArray[0].eventDescription%>
-                                </p>
-                            </h3>
-                            <h3 class="ml-3 col-lg-5"><b class="text-dark">City</b> :
-                                <%=outArray[0].state%>
-                            </h3>
-                        </div>
-                        <button type="button" class="btn btn-outline-success btn-lg event-btn mt-2 mb-3" data-toggle="modal" data-target="#form-Modal-IDE">Register<i class="fas fa-angle-double-right ml-1"></i></button>
-                    </div>
+                        <% } %>
+
+                            <div class="event1 mt-5">
+                                <h3 class="text-center event-head-style">Paper Presentation</h3>
+                                <hr>
+                                <div class="row event-style">
+                                    <h3 class="ml-3 offset-1 col-lg-5"><b class="text-dark">Start Date</b> :
+                                        <%=outArray[0].startdate%>
+                                    </h3>
+                                    <h3 class="ml-3 col-lg-5"><b class="text-dark">End date</b> :
+                                        <%=outArray[0].enddate%>
+                                    </h3>
+                                    <h3 class="ml-3 col-lg-5"><b class="text-dark">Description</b> :
+                                        <p>
+                                            <%=outArray[0].eventDescription%>
+                                        </p>
+                                    </h3>
+                                    <h3 class="ml-3 col-lg-5"><b class="text-dark">City</b> :
+                                        <%=outArray[0].state%>
+                                    </h3>
+                                </div>
+                                <button type="button" class="btn btn-outline-success btn-lg event-btn mt-2 mb-3" data-toggle="modal" data-target="#form-Modal-PPT">Register<i class="fas fa-angle-double-right ml-1"></i></button>
+                            </div>
+                            <div class="event1 mt-5">
+                                <h3 class="text-center event-head-style">Project Presentation</h3>
+                                <hr>
+                                <div class="row event-style">
+                                    <h3 class="ml-3 offset-1 col-lg-5"><b class="text-dark">Start Date</b> :
+                                        <%=outArray[0].startdate%>
+                                    </h3>
+                                    <h3 class="ml-3 col-lg-5"><b class="text-dark">End date</b> :
+                                        <%=outArray[0].enddate%>
+                                    </h3>
+                                    <h3 class="ml-3 col-lg-5"><b class="text-dark">Description</b> :
+                                        <p>
+                                            <%=outArray[0].eventDescription%>
+                                        </p>
+                                    </h3>
+                                    <h3 class="ml-3 col-lg-5"><b class="text-dark">City</b> :
+                                        <%=outArray[0].state%>
+                                    </h3>
+                                </div>
+                                <button type="button" class="btn btn-outline-success btn-lg event-btn mt-2 mb-3" data-toggle="modal" data-target="#form-Modal-PRO">Register<i class="fas fa-angle-double-right ml-1"></i></button>
+                            </div>
+                            <div class="event1 mt-5">
+                                <h3 class="text-center event-head-style">Ideathon</h3>
+                                <hr>
+                                <div class="row event-style">
+                                    <h3 class="ml-3 offset-1 col-lg-5"><b class="text-dark">Start Date</b> :
+                                        <%=outArray[0].startdate%>
+                                    </h3>
+                                    <h3 class="ml-3 col-lg-5"><b class="text-dark">End date</b> :
+                                        <%=outArray[0].enddate%>
+                                    </h3>
+                                    <h3 class="ml-3 col-lg-5"><b class="text-dark">Description</b> :
+                                        <p>
+                                            <%=outArray[0].eventDescription%>
+                                        </p>
+                                    </h3>
+                                    <h3 class="ml-3 col-lg-5"><b class="text-dark">City</b> :
+                                        <%=outArray[0].state%>
+                                    </h3>
+                                </div>
+                                <button type="button" class="btn btn-outline-success btn-lg event-btn mt-2 mb-3" data-toggle="modal" data-target="#form-Modal-IDE">Register<i class="fas fa-angle-double-right ml-1"></i></button>
+                            </div>
                 </div>
             </section>
         </div>
