@@ -206,7 +206,7 @@ app.get("/adminEvent", function(req, res) {
     if (AdminName != "") {
         ListOfEvent.find({}, (err, outArray) => {
             if (!err) {
-                res.render("adminevent", { userName: userName, ListOfEvent: outArray, message: "", AdminName: AdminName });
+                res.render("adminEvent", { userName: userName, ListOfEvent: outArray, message: "", AdminName: AdminName });
             }
         })
     } else {
