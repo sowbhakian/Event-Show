@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const _ = require('lodash');
 const { redirect } = require("express/lib/response");
 const app = express();
+
 //date
 const date = require("./date");
 // console.log(date.check("2001-11-1", "2001-11-2", "2000-1-1"));
@@ -11,7 +12,10 @@ app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: true }))
 app.use(express.static("public"));
 
-mongoose.connect("mongodb://localhost:27017/EventShow", { useNewUrlParser: true });
+// database Host
+let port = PORT || 5000;
+const URI = "mongodb+srv://sowbi:1234@cluster0.hdb8s.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+mongoose.connect(URI || "mongodb://localhost:27017/EventShow", { useNewUrlParser: true });
 
 //Signup/Login
 var userName = "";
@@ -403,6 +407,6 @@ app.get("/logout", function(req, res) {
     res.render("index", { userName: userName, AdminName: AdminName });
 });
 
-app.listen(9000, function() {
+app.listen(port, function() {
     console.log("Server running in 9000")
 });
