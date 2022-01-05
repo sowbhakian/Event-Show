@@ -60,11 +60,11 @@
 
                     <nav class="navbar ">
                         <ul class="row">
-                            <li class="liClsNavBar col-lg-11 border border-dark"><a class="navbarText" href="/">Home</a></li>
-                            <li class="liClsNavBar col-lg-11 border border-dark"><a class="navbarText" href="/event">Events</a></li>
-                            <li class="liClsNavBar col-lg-11 border border-dark"><a class="navbarText" href="/signin">Sign In</a></li>
-                            <li class="liClsNavBar col-lg-11 border border-dark"><a class="navbarText" href="#" onclick="alert('User cant able to access admin page')">Admin</a></li>
-                            <li class="liClsNavBar col-lg-11 border border-dark navbarBottom"><a class="navbarText" href="logout">Log Out</a></li>
+                            <li class="liClsNavBar col-lg-11 border border-dark nav-hover"><a class="navbarText" href="/"> Home</a></li>
+                            <li class="liClsNavBar col-lg-11 border border-dark nav-hover"><a class="navbarText" href="/event">Events</a></li>
+                            <li class="liClsNavBar col-lg-11 border border-dark nav-hover"><a class="navbarText" href="#" onclick="alert('Please Sign Out')">Sign In</a></li>
+                            <li class="liClsNavBar col-lg-11 border border-dark nav-hover"><a class="navbarText" href="#" onclick="alert('User cant able to access admin page!! Logout from the user to access admin page')">Admin</a></li>
+                            <li class="liClsNavBar col-lg-11 border border-dark navbarBottom nav-hover"><a class="navbarText" href="logout">Log Out</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -83,112 +83,109 @@
     <!-- Context Body -->
     <div class="row container-fluid">
 
-        <!-- Context Body -->
-        <div class="row container-fluid">
-
-            <!-- Home -->
-            <div class="col-lg-3"></div>
-            <section class="home col-lg-9">
-                <div class="welcomeDiv">
-                    <h1 class=" text-center AllHeading"> <span class="QuaHead">List Of Events</span></h1>
-                    <div class="pl-5 pr-5">
-                        <hr class="text-dark border border-1">
-                    </div>
+        <!-- Home -->
+        <div class="col-lg-3"></div>
+        <section class="home col-lg-9">
+            <div class="welcomeDiv">
+                <h1 class=" text-center AllHeading"> <span class="QuaHead">List Of Events</span></h1>
+                <div class="pl-5 pr-5">
+                    <hr class="text-dark border border-1">
                 </div>
+            </div>
 
-                <!-- Main Events -->
-                <div class="row">
-                    <% ListOfEvent.forEach((e)=>{ %>
-                        <div class="col-lg-6 col-md-6 cardWhole">
-                            <div class="card">
-                                <div class="cardHeader">
-                                    <%=e.clgname%>
-                                        <hr>
-                                </div>
-
-                                <div class="cardBody ">
-                                    <div class="cardList ">
-                                        <i class="fas fa-school CardIcons "></i> <span class="cardText "> <u>Event Name</u> - <%=e.eventname%></span>
-                                    </div>
-
-                                    <div class="cardList ">
-                                        <i class="far fa-clock CardIcons "></i> <span class="cardText "> <u>Due Date</u> - <%=e.startdate%> </span>
-                                    </div>
-
-                                    <div class="cardList ">
-                                        <i class="fas fa-envelope-open-text CardIcons "></i> <span class="cardText "> <u>Medium</u> - <%=e.medium%></span>
-                                    </div>
-                                    <div class="EventRegsButton ">
-                                        <form action="/innerMoveEvent" method="post">
-                                            <input type="hidden" name="eventName" value="<%=e.eventname%>">
-                                            <button type="submit" class="btn btn-outline-success">Go To Event</button>
-                                        </form>
-                                    </div>
-                                </div>
+            <!-- Main Events -->
+            <div class="row">
+                <% ListOfEvent.forEach((e)=>{ %>
+                    <div class="col-lg-6 col-md-6 cardWhole">
+                        <div class="card">
+                            <div class="cardHeader">
+                                <%=e.clgname%>
+                                    <hr>
                             </div>
-                        </div>
-                        <% }) %>
-                </div>
 
-            </section>
-        </div>
-
-
-        <article>
-            <div class="modal fade" id="signin-Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered" role="document">
-                    <div class="modal-content">
-                        <!-- Close -->
-                        <div class="modal-header border-bottom-0">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
-                        </button>
-                        </div>
-
-                        <!-- Context -->
-                        <div class="modal-body">
-                            <div class="container wholeModel">
-                                <div class="text-center">
-
-                                    <h3 class="name">Event Show</h3>
-                                    <p>Glory Your Self By Participating</p>
-                                    <h6 class="text-light my-auto">
-                                        <i class="fas fa-user-tie fa-2x"></i>
-                                        <samp class="nameIndex">
-                                        sowbi
-                                    </samp>
-                                    </h6>
+                            <div class="cardBody ">
+                                <div class="cardList ">
+                                    <i class="fas fa-school CardIcons "></i> <span class="cardText "> <u>Event Name</u> - <%=e.eventname%></span>
                                 </div>
 
-                                <div class="container ModelItems">
-                                    <p data-dismiss="modal" aria-label="Close" class="border border-dark navbarTextModel " onclick="clickHome()">Home</p>
+                                <div class="cardList ">
+                                    <i class="far fa-clock CardIcons "></i> <span class="cardText "> <u>Due Date</u> - <%=e.startdate%> </span>
                                 </div>
-                                <div class="container ModelItems">
-                                    <p data-dismiss="modal" aria-label="Close" class="border border-dark navbarTextModel " onclick="clickEvents()">Event</p>
+
+                                <div class="cardList ">
+                                    <i class="fas fa-envelope-open-text CardIcons "></i> <span class="cardText "> <u>Medium</u> - <%=e.medium%></span>
                                 </div>
-                                <div class="container ModelItems">
-                                    <p data-dismiss="modal" aria-label="Close" class="border border-dark navbarTextModel " onclick="clickSignin()">Sign In</p>
-                                </div>
-                                <div class="container ModelItems">
-                                    <p data-dismiss="modal" aria-label="Close" class="border border-dark navbarTextModel " onclick="clickAdmin()">Admin</p>
-                                </div>
-                                <div class="container ModelItems">
-                                    <a href="">
-                                        <p data-dismiss="modal" aria-label="Close" class="border border-dark navbarTextModel ">Log Out</p>
-                                    </a>
+                                <div class="EventRegsButton ">
+                                    <form action="/innerMoveEvent" method="post">
+                                        <input type="hidden" name="eventName" value="<%=e.eventname%>">
+                                        <button type="submit" class="btn btn-outline-success">Go To Event</button>
+                                    </form>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-        </article>
+                    <% }) %>
+            </div>
 
-        <!-- jQuery -->
-        <script src='https://code.jquery.com/jquery-3.3.1.slim.min.js'></script>
-        <!-- Popper JS -->
-        <script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js'></script>
-        <!-- Bootstrap JS -->
-        <script src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js'></script>
-        <!-- <script src="animation.js"></script> -->
+        </section>
+    </div>
+
+    <!-- Menu Burgger -->
+    <article>
+        <div class="modal fade" id="signin-Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <!-- Close -->
+                    <div class="modal-header border-bottom-0">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                                </button>
+                    </div>
+
+                    <!-- Context -->
+                    <div class="modal-body">
+                        <div class="container wholeModel">
+                            <div class="text-center">
+
+                                <h3 class="name">Event Show</h3>
+                                <p>Glory Your Self By Participating</p>
+                                <h6 class="text-light my-auto">
+                                    <i class="fas fa-user-tie fa-2x"></i>
+                                    <samp class="nameIndex">
+                                        <%=userName%>
+                                            </samp>
+                                </h6>
+                            </div>
+
+                            <div class="container ModelItems">
+                                <p class="border border-dark navbarTextModel "><a class="navbarText" href="/">Home</a></p>
+                            </div>
+                            <div class="container ModelItems">
+                                <p class="border border-dark navbarTextModel "><a class="navbarText" href="/event">Events</a></p>
+                            </div>
+                            <div class="container ModelItems">
+                                <p class="border border-dark navbarTextModel "><a class="navbarText" href="/signin">Sign In</a></p>
+                            </div>
+                            <div class="container ModelItems">
+                                <p class="border border-dark navbarTextModel "><a class="navbarText" href="/adminEvent">Admin</a></p>
+                            </div>
+                            <div class="container ModelItems">
+                                <a href="">
+                                    <p class="border border-dark navbarTextModel "><a class="navbarText" href="logout">Log Out</a></p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </article>
+
+    <!-- jQuery -->
+    <script src='https://code.jquery.com/jquery-3.3.1.slim.min.js'></script>
+    <!-- Popper JS -->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js'></script>
+    <!-- Bootstrap JS -->
+    <script src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js'></script>
+    <!-- <script src="animation.js"></script> -->
 </body>
 
 </html>

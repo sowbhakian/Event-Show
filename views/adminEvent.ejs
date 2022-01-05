@@ -60,11 +60,11 @@
 
                     <nav class="navbar ">
                         <ul class="row">
-                            <li class="liClsNavBar col-lg-11 border border-dark"><a class="navbarText" href="/">Home</a></li>
-                            <li class="liClsNavBar col-lg-11 border border-dark"><a class="navbarText" href="/adminEvent">Events</a></li>
-                            <li class="liClsNavBar col-lg-11 border border-dark"><a class="navbarText" href="/signin">Sign In</a></li>
-                            <li class="liClsNavBar col-lg-11 border border-dark"><a class="navbarText" href="#">Admin</a></li>
-                            <li class="liClsNavBar col-lg-11 border border-dark navbarBottom"><a class="navbarText" href="/logout">Log Out</a></li>
+                            <li class="liClsNavBar col-lg-11 border border-dark nav-hover"><a class="navbarText" href="/">Home</a></li>
+                            <li class="liClsNavBar col-lg-11 border border-dark nav-hover"><a class="navbarText" href="/adminEvent">Events</a></li>
+                            <li class="liClsNavBar col-lg-11 border border-dark nav-hover"><a class="navbarText" href="#" onclick="alert('Please Log Out!')">Sign In</a></li>
+                            <li class="liClsNavBar col-lg-11 border border-dark nav-hover"><a class="navbarText" href="#">Admin</a></li>
+                            <li class="liClsNavBar col-lg-11 border border-dark navbarBottom nav-hover"><a class="navbarText" href="/logout">Log Out</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -172,6 +172,7 @@
             <i class="fas fa-2x fa-bars fa-1x text-warning BurgerIcon" type="button" data-toggle="modal" data-target="#signin-Modal"></i>
         </a>
     </div>
+
     <!-- Model Burgger -->
     <article>
         <div class="modal fade" id="signin-Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -180,7 +181,7 @@
                     <!-- Close -->
                     <div class="modal-header border-bottom-0">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
-                        </button>
+                                </button>
                     </div>
 
                     <!-- Context -->
@@ -193,26 +194,26 @@
                                 <h6 class="text-light my-auto">
                                     <i class="fas fa-user-tie fa-2x"></i>
                                     <samp class="nameIndex">
-                                        <%=AdminName%>
-                                    </samp>
+                                        <%=userName%>
+                                            </samp>
                                 </h6>
                             </div>
 
                             <div class="container ModelItems">
-                                <p data-dismiss="modal" aria-label="Close" class="border border-dark navbarTextModel " onclick="clickHome()">Home</p>
+                                <p class="border border-dark navbarTextModel "><a class="navbarText" href="/">Home</a></p>
                             </div>
                             <div class="container ModelItems">
-                                <p data-dismiss="modal" aria-label="Close" class="border border-dark navbarTextModel " onclick="clickEvents()">Event</p>
+                                <p class="border border-dark navbarTextModel "><a class="navbarText" href="/event">Events</a></p>
                             </div>
                             <div class="container ModelItems">
-                                <p data-dismiss="modal" aria-label="Close" class="border border-dark navbarTextModel " onclick="clickSignin()">Sign In</p>
+                                <p class="border border-dark navbarTextModel "><a class="navbarText" href="/signin">Sign In</a></p>
                             </div>
                             <div class="container ModelItems">
-                                <p data-dismiss="modal" aria-label="Close" class="border border-dark navbarTextModel " onclick="clickAdmin()">Admin</p>
+                                <p class="border border-dark navbarTextModel "><a class="navbarText" href="/adminEvent">Admin</a></p>
                             </div>
                             <div class="container ModelItems">
                                 <a href="">
-                                    <p data-dismiss="modal" aria-label="Close" class="border border-dark navbarTextModel ">Log Out</p>
+                                    <p class="border border-dark navbarTextModel "><a class="navbarText" href="logout">Log Out</a></p>
                                 </a>
                             </div>
                         </div>
@@ -223,7 +224,6 @@
 
 
     <!-- Add Event Model -->
-
     <article>
         <div class="modal fade" id="addEvents" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
@@ -345,31 +345,6 @@
                 </div>
             </div>
     </article>
-
-    <!-- footer -->
-    <!-- <div class="col-lg-3"></div>
-        <footer class="col-lg-9" id="contact">
-            <div class="text-center">
-
-                <h5 class="contact">
-                    <a href="#" target="_blank">
-                        <i class="fab fa-github-square fa-2x contactIcons"></i>
-                    </a>
-                    <a href="mailto:sowbhakian.shansan@gmail.com" target="_blank">
-                        <i class="fas fa-envelope fa-2x contactIcons"></i>
-                    </a>
-                    <a href="#" target="_blank">
-                        <i class="fab fa-linkedin fa-2x contactIcons"></i>
-                    </a>
-                    <a href="#" target="_blank">
-                        <i class="fab fa-instagram-square fa-2x contactIcons"></i>
-                    </a>
-
-                </h5>
-                <span class="SowbiName">  <i class="far fa-copyright"></i>  Event Show</span>
-                                        </div>
-                                        </footer>
-                                    </div> -->
 
     <!-- jQuery -->
     <script src='https://code.jquery.com/jquery-3.3.1.slim.min.js'></script>

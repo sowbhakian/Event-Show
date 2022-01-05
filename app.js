@@ -70,7 +70,7 @@ const ListOfEvent = mongoose.model("listofevents", ListOfEventSchema) //Collecti
 
 // Home
 app.get("/", function(req, res) {
-    res.render("index", { userName: userName });
+    res.render("index", { userName: userName, AdminName: AdminName });
 });
 
 //  SIGNIN | LOGIN
@@ -149,7 +149,6 @@ app.post("/login", function(req, res) {
 
 // EVENTS
 app.get("/event", function(req, res) {
-
     if (userName != "") {
         ListOfEvent.find({}, (err, outArray) => {
             if (!err) {
@@ -159,7 +158,6 @@ app.get("/event", function(req, res) {
     } else {
         res.redirect("/signin");
     }
-
 });
 app.post("/innerMoveEvent", function(req, res) {
     var eventName = req.body.eventName;
@@ -197,9 +195,7 @@ app.post("/enrollmentView", function(req, res) {
             pptvar = outArray1[0].ppt;
             projectvar = outArray1[0].project;
             ideathonvar = outArray1[0].ideathon;
-            console.log(projectvar)
-
-            res.render("enrollmentView", { eventName: eventName, pptvar: pptvar, projectvar: projectvar, ideathonvar: ideathonvar, startDate: outArray1[0].startdate, endDate: outArray1[0].enddate, clgName: outArray1[0].clgname, c: 1 });
+            res.render("enrollmentView", { eventName: eventName, pptvar: pptvar, projectvar: projectvar, ideathonvar: ideathonvar, startDate: outArray1[0].startdate, endDate: outArray1[0].enddate, clgName: outArray1[0].clgname, eventName: outArray1[0].eventname, c: 0 });
         }
     })
 });
@@ -218,7 +214,7 @@ app.get("/adminEvent", function(req, res) {
 });
 app.post("/adminEventAdd", function(req, res) {
     var clgname = req.body.clgname
-    var eventname = req.body.eventname
+    var eventname = _.upperCase(req.body.eventname);
     var regdate = req.body.registrationdate
     var startdate = req.body.startdate
     var enddate = req.body.enddate
@@ -285,6 +281,9 @@ app.post("/removeEvent", function(req, res) {
     })
 
 });
+app.post("/removeUser", function(req, res) {
+    var eventName = req.body.eventName
+});
 
 
 // PPT PRO IDE - POST
@@ -324,7 +323,6 @@ app.post("/ppt", function(req, res) {
     });
 
 });
-
 app.post("/project", function(req, res) {
     var name = req.body.name
     var rollno = req.body.rollno
@@ -402,7 +400,7 @@ app.get("/logout", function(req, res) {
     userName = "";
     userId = "";
     AdminName = "";
-    res.render("index", { userName: userName });
+    res.render("index", { userName: userName, AdminName: AdminName });
 });
 
 app.listen(9000, function() {

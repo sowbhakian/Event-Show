@@ -61,11 +61,11 @@
 
                     <nav class="navbar ">
                         <ul class="row">
-                            <li class="liClsNavBar col-lg-11 border border-dark"><a class="navbarText" href="/">Home</a></li>
-                            <li class="liClsNavBar col-lg-11 border border-dark"><a class="navbarText" href="/event">Events</a></li>
-                            <li class="liClsNavBar col-lg-11 border border-dark"><a class="navbarText" href="/signin">Sign In</a></li>
-                            <li class="liClsNavBar col-lg-11 border border-dark"><a class="navbarText" href="/adminEvent">Admin</a></li>
-                            <li class="liClsNavBar col-lg-11 border border-dark navbarBottom"><a class="navbarText" href="/logout">Log Out</a></li>
+                            <li class="liClsNavBar col-lg-11 border border-dark nav-hover"><a class="navbarText" href="/"> Home</a></li>
+                            <li class="liClsNavBar col-lg-11 border border-dark nav-hover"><a class="navbarText" href="/event">Events</a></li>
+                            <li class="liClsNavBar col-lg-11 border border-dark nav-hover"><a class="navbarText" href="/signin">Sign In</a></li>
+                            <li class="liClsNavBar col-lg-11 border border-dark nav-hover"><a class="navbarText" href="/adminEvent">Admin</a></li>
+                            <li class="liClsNavBar col-lg-11 border border-dark nav-hover navbarBottom"><a class="navbarText" href="/logout">Log Out</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -475,7 +475,7 @@
                     <!-- Close -->
                     <div class="modal-header border-bottom-0">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
-                        </button>
+                                </button>
                     </div>
 
                     <!-- Context -->
@@ -488,26 +488,26 @@
                                 <h6 class="text-light my-auto">
                                     <i class="fas fa-user-tie fa-2x"></i>
                                     <samp class="nameIndex">
-                                        sowbi
-                                    </samp>
+                                        <%=userName%>
+                                            </samp>
                                 </h6>
                             </div>
 
                             <div class="container ModelItems">
-                                <p data-dismiss="modal" aria-label="Close" class="border border-dark navbarTextModel ">Home</p>
+                                <p class="border border-dark navbarTextModel "><a class="navbarText" href="/">Home</a></p>
                             </div>
                             <div class="container ModelItems">
-                                <p data-dismiss="modal" aria-label="Close" class="border border-dark navbarTextModel ">Event</p>
+                                <p class="border border-dark navbarTextModel "><a class="navbarText" href="/event">Events</a></p>
                             </div>
                             <div class="container ModelItems">
-                                <p data-dismiss="modal" aria-label="Close" class="border border-dark navbarTextModel ">Sign In</p>
+                                <p class="border border-dark navbarTextModel "><a class="navbarText" href="/signin">Sign In</a></p>
                             </div>
                             <div class="container ModelItems">
-                                <p data-dismiss="modal" aria-label="Close" class="border border-dark navbarTextModel ">Admin</p>
+                                <p class="border border-dark navbarTextModel "><a class="navbarText" href="/adminEvent">Admin</a></p>
                             </div>
                             <div class="container ModelItems">
                                 <a href="">
-                                    <p data-dismiss="modal" aria-label="Close" class="border border-dark navbarTextModel ">Log Out</p>
+                                    <p class="border border-dark navbarTextModel "><a class="navbarText" href="logout">Log Out</a></p>
                                 </a>
                             </div>
                         </div>

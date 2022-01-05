@@ -53,21 +53,47 @@
                             <i class="fas fa-user-tie fa-2x"></i>
                             <samp class="nameIndex">
                                 <p>
+                                    <% if(userName.length!=0){%>
                                     <%=userName%>
+                                    <%}else{%>
+                                        <%=AdminName%>
+                                    <%}%>
+
                                 </p>
                             </samp>
 
                         </h6>
                     </div>
 
-                    <nav class="navbar ">
+                    <!-- <nav class="navbar ">
                         <ul class="row">
                             <li class="liClsNavBar col-lg-11 border border-dark"><a class="navbarText" href="/">Home</a></li>
-                            <li class="liClsNavBar col-lg-11 border border-dark"><a class="navbarText" href="/event">Events</a></li>
-                            <li class="liClsNavBar col-lg-11 border border-dark"><a class="navbarText" href="/signin">Sign In</a></li>
-                            <li class="liClsNavBar col-lg-11 border border-dark"><a class="navbarText" href="/adminEvent">Admin</a></li>
-                            <li class="liClsNavBar col-lg-11 border border-dark navbarBottom">
-                                <a class="navbarText" href="logout">Log Out</a></li>
+                            <% if(AdminName == "Admin"){%>
+                                <li class="liClsNavBar col-lg-11 border border-dark"><a class="navbarText" href="/adminEvent">Events</a></li>
+                                <%}else{%>
+                                    <li class="liClsNavBar col-lg-11 border border-dark"><a class="navbarText" href="/event">Events</a></li>
+                                    <%}%>
+
+                                        <li class="liClsNavBar col-lg-11 border border-dark"><a class="navbarText" href="/signin">Sign In</a></li>
+                                        <li class="liClsNavBar col-lg-11 border border-dark"><a class="navbarText" href="/adminEvent">Admin</a></li>
+                                        <li class="liClsNavBar col-lg-11 border border-dark navbarBottom">
+                                            <a class="navbarText" href="logout">Log Out</a></li>
+                        </ul>
+                    </nav> -->
+
+                    <nav class="navbar ">
+                        <ul class="row">
+                            <li class="liClsNavBar col-lg-11 border border-dark nav-hover"><a class="navbarText" href="/">Home</a></li>
+                            <% if(AdminName == "Admin"){%>
+                                <li class="liClsNavBar col-lg-11 border border-dark nav-hover"><a class="navbarText" href="/adminEvent">Events</a></li>
+                                <%}else{%>
+                                    <li class="liClsNavBar col-lg-11 border border-dark nav-hover"><a class="navbarText" href="/event">Events</a></li>
+                                    <%}%>
+
+                                        <li class="liClsNavBar col-lg-11 border border-dark nav-hover"><a class="navbarText" href="/signin">Sign In</a></li>
+                                        <li class="liClsNavBar col-lg-11 border border-dark nav-hover"><a class="navbarText" href="/adminEvent">Admin</a></li>
+                                        <li class="liClsNavBar col-lg-11 border border-dark navbarBottom nav-hover">
+                                            <a class="navbarText" href="logout">Log Out</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -131,14 +157,6 @@
                     </div>
             </section>
 
-            <!-- Sample out format -->
-            <!-- <div class="col-lg-3"></div>
-                <section class="home col-lg-9" id="home">
-                </section> -->
-
-
-
-
             <!-- footer -->
             <div class="col-lg-3"></div>
             <footer class="col-lg-9" id="contact">
@@ -164,6 +182,7 @@
             </footer>
             </div>
 
+            <!-- Menu Burgger -->
             <article>
                 <div class="modal fade" id="signin-Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -184,26 +203,26 @@
                                         <h6 class="text-light my-auto">
                                             <i class="fas fa-user-tie fa-2x"></i>
                                             <samp class="nameIndex">
-                                            sowbi
+                                    <%=userName%>
                                         </samp>
                                         </h6>
                                     </div>
 
                                     <div class="container ModelItems">
-                                        <p data-dismiss="modal" aria-label="Close" class="border border-dark navbarTextModel " onclick="clickHome()">Home</p>
+                                        <p class="border border-dark navbarTextModel "><a class="navbarText" href="/">Home</a></p>
                                     </div>
                                     <div class="container ModelItems">
-                                        <p data-dismiss="modal" aria-label="Close" class="border border-dark navbarTextModel " onclick="clickEvents()">Event</p>
+                                        <p class="border border-dark navbarTextModel "><a class="navbarText" href="/event">Events</a></p>
                                     </div>
                                     <div class="container ModelItems">
-                                        <p data-dismiss="modal" aria-label="Close" class="border border-dark navbarTextModel " onclick="clickSignin()">Sign In</p>
+                                        <p class="border border-dark navbarTextModel "><a class="navbarText" href="/signin">Sign In</a></p>
                                     </div>
                                     <div class="container ModelItems">
-                                        <p data-dismiss="modal" aria-label="Close" class="border border-dark navbarTextModel " onclick="clickAdmin()">Admin</p>
+                                        <p class="border border-dark navbarTextModel "><a class="navbarText" href="/adminEvent">Admin</a></p>
                                     </div>
                                     <div class="container ModelItems">
                                         <a href="">
-                                            <p data-dismiss="modal" aria-label="Close" class="border border-dark navbarTextModel ">Log Out</p>
+                                            <p class="border border-dark navbarTextModel "><a class="navbarText" href="logout">Log Out</a></p>
                                         </a>
                                     </div>
                                 </div>

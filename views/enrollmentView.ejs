@@ -65,11 +65,15 @@
         .enroll-home:hover {
             color: #003f9c;
         }
+        
+        .removetd:hover {
+            background-color: #ffffff;
+        }
     </style>
 </head>
 
 <body class="wholeBody">
-    <h1 class=" AllHeading text-center" style="margin-top: 2%;">Enrollment List
+    <h1 class=" AllHeading text-center" style="margin-top: 2%;"><b><%=eventName%></b> Enrollment List
         <a href="/adminEvent">
             <div class="EventRegsButton">
                 <button type="button" class="btn btn-outline-primary">View Events</button>
@@ -89,6 +93,7 @@
             <th>College Name</th>
             <th>Start Date</th>
             <th>End Date</th>
+            <th><u>Remove User</u></th>
         </tr>
 
         <% pptvar.forEach((e)=>{ %>
@@ -114,6 +119,12 @@
                 <td>
                     <%=endDate%>
                 </td>
+                <td class="removetd">
+                    <form action="/removeUser" method="post">
+                        <input type="hidden" name="id" value="<%=e._id%>">
+                        <button type="submit" class="btn btn-outline-danger">Remove</button>
+                    </form>
+                </td>
                 <% }) %>
             </tr>
     </table>
@@ -129,6 +140,7 @@
                 <th>College Name</th>
                 <th>Start Date</th>
                 <th>End Date</th>
+                <th><u>Remove User</u></th>
             </tr>
 
             <% projectvar.forEach((e)=>{ %>
@@ -154,6 +166,13 @@
                     <td>
                         <%=endDate%>
                     </td>
+                    <td class="removetd">
+                        <form action="/removeUser" method="post">
+                            <input type="hidden" name="id" value="<%=e._id%>">
+                            <button type="submit" class="btn btn-outline-danger">Remove</button>
+                        </form>
+                    </td>
+
                     <% }) %>
                 </tr>
         </table>
@@ -170,6 +189,7 @@
                     <th>College Name</th>
                     <th>Start Date</th>
                     <th>End Date</th>
+                    <th><u>Remove User</u></th>
                 </tr>
 
                 <% ideathonvar.forEach((e)=>{ %>
@@ -194,6 +214,12 @@
                         </td>
                         <td>
                             <%=endDate%>
+                        </td>
+                        <td class="removetd">
+                            <form action="/removeUser" method="post">
+                                <input type="hidden" name="id" value="<%=e._id%>">
+                                <button type="submit" class="btn btn-outline-danger">Remove</button>
+                            </form>
                         </td>
                         <% }) %>
                     </tr>

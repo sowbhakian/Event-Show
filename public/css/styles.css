@@ -527,3 +527,16 @@ a:hover {
 .event-btn {
     margin-left: 37%;
 }
+
+
+/* navHover */
+
+.nav-hover {
+    transition: transform .2s;
+}
+
+.nav-hover:hover {
+    -ms-transform: scale(1.05);
+    -webkit-transform: scale(1.05);
+    transform: scale(1.05);
+}
