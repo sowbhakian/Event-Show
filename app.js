@@ -3,17 +3,15 @@ const mongoose = require("mongoose");
 const _ = require('lodash');
 const { redirect } = require("express/lib/response");
 const app = express();
-let port = process.env.PORT || 5000;
-//date
 const date = require("./date");
-// console.log(date.check("2001-11-1", "2001-11-2", "2000-1-1"));
 
 app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: true }))
 app.use(express.static("public"));
 
-// database Host
 
+// database Host
+let port = process.env.PORT || 5000;
 const URI = "mongodb+srv://sowbi:1234@cluster0.hdb8s.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
 mongoose.connect(URI || "mongodb://localhost:27017/EventShow", { useNewUrlParser: true });
 
@@ -247,7 +245,7 @@ app.post("/adminEventAdd", function(req, res) {
                 if (outArray.length != 0) {
                     ListOfEvent.find({}, (err, outArray) => {
                         if (!err) {
-                            res.render("adminevent", { userName: userName, ListOfEvent: outArray, message: "Event Name Already Exits!", AdminName: AdminName });
+                            res.render("adminEvent", { userName: userName, ListOfEvent: outArray, message: "Event Name Already Exits!", AdminName: AdminName });
                         }
                     })
                 } else {
