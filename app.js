@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const _ = require('lodash');
 const { redirect } = require("express/lib/response");
 const app = express();
-const port = process.env.PORT || 5000;
+let port = process.env.PORT || 5000;
 //date
 const date = require("./date");
 // console.log(date.check("2001-11-1", "2001-11-2", "2000-1-1"));
