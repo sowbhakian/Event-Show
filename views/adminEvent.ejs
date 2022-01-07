@@ -72,6 +72,65 @@
         </header>
     </section>
 
+
+    <!-- MenuBar Icon -->
+    <div id="Toggler" class="sticky-top upDiv text-right">
+        <a href="#title-section">
+            <i class="fas fa-2x fa-bars fa-1x text-warning BurgerIcon" type="button" data-toggle="modal" data-target="#signin-Modal"></i>
+        </a>
+    </div>
+
+
+
+    <!-- Model Burgger -->
+    <article>
+        <div class="modal fade" id="signin-Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <!-- Close -->
+                    <div class="modal-header border-bottom-0">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                                </button>
+                    </div>
+
+                    <!-- Context -->
+                    <div class="modal-body">
+                        <div class="container wholeModel">
+                            <div class="text-center">
+
+                                <h3 class="name">Event Show</h3>
+                                <p>Glory Your Self By Participating</p>
+                                <h6 class="text-light my-auto">
+                                    <i class="fas fa-user-tie fa-2x"></i>
+                                    <samp class="nameIndex">
+                                        <%=userName%>
+                                            </samp>
+                                </h6>
+                            </div>
+
+                            <div class="container ModelItems">
+                                <p class="border border-dark navbarTextModel "><a class="navbarText" href="/">Home</a></p>
+                            </div>
+                            <div class="container ModelItems">
+                                <p class="border border-dark navbarTextModel "><a class="navbarText" href="/event">Events</a></p>
+                            </div>
+                            <div class="container ModelItems">
+                                <p class="border border-dark navbarTextModel "><a class="navbarText" href="/signin">Sign In</a></p>
+                            </div>
+                            <div class="container ModelItems">
+                                <p class="border border-dark navbarTextModel "><a class="navbarText" href="/adminEvent">Admin</a></p>
+                            </div>
+                            <div class="container ModelItems">
+                                <a href="">
+                                    <p class="border border-dark navbarTextModel "><a class="navbarText" href="logout">Log Out</a></p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </article>
+
     <!-- Context Body -->
     <div class="row container-fluid">
 
@@ -164,63 +223,6 @@
             </section>
         </div>
     </div>
-
-
-    <!-- MenuBar Icon -->
-    <div id="Toggler" class="sticky-top upDiv text-right">
-        <a href="#title-section">
-            <i class="fas fa-2x fa-bars fa-1x text-warning BurgerIcon" type="button" data-toggle="modal" data-target="#signin-Modal"></i>
-        </a>
-    </div>
-
-    <!-- Model Burgger -->
-    <article>
-        <div class="modal fade" id="signin-Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <!-- Close -->
-                    <div class="modal-header border-bottom-0">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
-                                </button>
-                    </div>
-
-                    <!-- Context -->
-                    <div class="modal-body">
-                        <div class="container wholeModel">
-                            <div class="text-center">
-
-                                <h3 class="name">Event Show</h3>
-                                <p>Glory Your Self By Participating</p>
-                                <h6 class="text-light my-auto">
-                                    <i class="fas fa-user-tie fa-2x"></i>
-                                    <samp class="nameIndex">
-                                        <%=userName%>
-                                            </samp>
-                                </h6>
-                            </div>
-
-                            <div class="container ModelItems">
-                                <p class="border border-dark navbarTextModel "><a class="navbarText" href="/">Home</a></p>
-                            </div>
-                            <div class="container ModelItems">
-                                <p class="border border-dark navbarTextModel "><a class="navbarText" href="/event">Events</a></p>
-                            </div>
-                            <div class="container ModelItems">
-                                <p class="border border-dark navbarTextModel "><a class="navbarText" href="/signin">Sign In</a></p>
-                            </div>
-                            <div class="container ModelItems">
-                                <p class="border border-dark navbarTextModel "><a class="navbarText" href="/adminEvent">Admin</a></p>
-                            </div>
-                            <div class="container ModelItems">
-                                <a href="">
-                                    <p class="border border-dark navbarTextModel "><a class="navbarText" href="logout">Log Out</a></p>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-    </article>
 
 
     <!-- Add Event Model -->

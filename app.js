@@ -197,7 +197,7 @@ app.post("/enrollmentView", function(req, res) {
             pptvar = outArray1[0].ppt;
             projectvar = outArray1[0].project;
             ideathonvar = outArray1[0].ideathon;
-            res.render("enrollmentView", { eventName: eventName, pptvar: pptvar, projectvar: projectvar, ideathonvar: ideathonvar, startDate: outArray1[0].startdate, endDate: outArray1[0].enddate, clgName: outArray1[0].clgname, eventName: outArray1[0].eventname, c: 0 });
+            res.render("enrollmentView", { eventName: eventName, pptvar: pptvar, projectvar: projectvar, ideathonvar: ideathonvar, startDate: outArray1[0].startdate, endDate: outArray1[0].enddate, clgName: outArray1[0].clgname, eventName: outArray1[0].eventname, c: 0, message: "" });
         }
     })
 });
@@ -284,7 +284,77 @@ app.post("/removeEvent", function(req, res) {
 
 });
 app.post("/removeUser", function(req, res) {
+    var id = req.body.id
     var eventName = req.body.eventName
+    var event = req.body.event
+
+    if (event == "ppt") {
+        Ppt.findByIdAndDelete(id, function(err) {
+            if (!err) {
+                ListOfEvent.find({ eventname: eventName }).populate('ppt').populate('project').populate('ideathon').exec((err, foundEvent) => {
+                    if (!err) {
+                        res.render("enrollmentView", {
+                            eventName: eventName,
+                            pptvar: foundEvent[0].ppt,
+                            projectvar: foundEvent[0].project,
+                            ideathonvar: foundEvent[0].ideathon,
+                            startDate: foundEvent[0].startdate,
+                            endDate: foundEvent[0].enddate,
+                            clgName: foundEvent[0].clgname,
+                            eventName: foundEvent[0].eventname,
+                            c: 0,
+                            message: "User Deleted Successfully!"
+                        });
+                    }
+                });
+            }
+        });
+    } else if (event == "project") {
+        Project.findByIdAndDelete(id, function(err) {
+            if (!err) {
+                ListOfEvent.find({ eventname: eventName }).populate('ppt').populate('project').populate('ideathon').exec((err, foundEvent) => {
+                    if (!err) {
+                        res.render("enrollmentView", {
+                            eventName: eventName,
+                            pptvar: foundEvent[0].ppt,
+                            projectvar: foundEvent[0].project,
+                            ideathonvar: foundEvent[0].ideathon,
+                            startDate: foundEvent[0].startdate,
+                            endDate: foundEvent[0].enddate,
+                            clgName: foundEvent[0].clgname,
+                            eventName: foundEvent[0].eventname,
+                            c: 0,
+                            message: "User Deleted Successfully!"
+                        });
+                    }
+                });
+            }
+        });
+    } else if (event == "ideathon") {
+        Ideathon.findByIdAndDelete(id, function(err) {
+            if (!err) {
+                ListOfEvent.find({ eventname: eventName }).populate('ppt').populate('project').populate('ideathon').exec((err, foundEvent) => {
+                    if (!err) {
+                        res.render("enrollmentView", {
+                            eventName: eventName,
+                            pptvar: foundEvent[0].ppt,
+                            projectvar: foundEvent[0].project,
+                            ideathonvar: foundEvent[0].ideathon,
+                            startDate: foundEvent[0].startdate,
+                            endDate: foundEvent[0].enddate,
+                            clgName: foundEvent[0].clgname,
+                            eventName: foundEvent[0].eventname,
+                            c: 0,
+                            message: "User Deleted Successfully!"
+                        });
+                    }
+                });
+            }
+        });
+    }
+
+
+
 });
 
 

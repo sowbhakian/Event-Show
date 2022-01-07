@@ -207,6 +207,10 @@ a:hover {
         display: none;
         line-height: 60px;
     }
+    .font-size-text {
+        line-height: 45px;
+        margin-left: 0;
+    }
 }
 
 @media screen and (max-width:770px) {

@@ -83,147 +83,164 @@
     </h1>
 
     <hr>
-    <h2 class="welcomeDiv">Paper Presentation</h2>
-    <table>
-        <tr>
-            <th>S.No</th>
-            <th>Name</th>
-            <th>Roll No</th>
-            <th>Mail ID</th>
-            <th>College Name</th>
-            <th>Start Date</th>
-            <th>End Date</th>
-            <th><u>Remove User</u></th>
-        </tr>
 
-        <% pptvar.forEach((e)=>{ %>
-            <tr>
-                <td>
-                    <%= ++c%>
-                </td>
-                <td>
-                    <%=e.name%>
-                </td>
-                <td>
-                    <%=e.rollno%>
-                </td>
-                <td>
-                    <%=e.mailid%>
-                </td>
-                <td>
-                    <%=clgName%>
-                </td>
-                <td>
-                    <%=startDate%>
-                </td>
-                <td>
-                    <%=endDate%>
-                </td>
-                <td class="removetd">
-                    <form action="/removeUser" method="post">
-                        <input type="hidden" name="id" value="<%=e._id%>">
-                        <button type="submit" class="btn btn-outline-danger">Remove</button>
-                    </form>
-                </td>
-                <% }) %>
-            </tr>
-    </table>
-
-    <%c=0%>
-        <h2 class="welcomeDiv">Project Presentation</h2>
-        <table>
-            <tr>
-                <th>S.No</th>
-                <th>Name</th>
-                <th>Roll No</th>
-                <th>Mail ID</th>
-                <th>College Name</th>
-                <th>Start Date</th>
-                <th>End Date</th>
-                <th><u>Remove User</u></th>
-            </tr>
-
-            <% projectvar.forEach((e)=>{ %>
-                <tr>
-                    <td>
-                        <%= ++c%>
-                    </td>
-                    <td>
-                        <%=e.name%>
-                    </td>
-                    <td>
-                        <%=e.rollno%>
-                    </td>
-                    <td>
-                        <%=e.mailid%>
-                    </td>
-                    <td>
-                        <%=clgName%>
-                    </td>
-                    <td>
-                        <%=startDate%>
-                    </td>
-                    <td>
-                        <%=endDate%>
-                    </td>
-                    <td class="removetd">
-                        <form action="/removeUser" method="post">
-                            <input type="hidden" name="id" value="<%=e._id%>">
-                            <button type="submit" class="btn btn-outline-danger">Remove</button>
-                        </form>
-                    </td>
-
-                    <% }) %>
-                </tr>
-        </table>
-
-
-        <%c=0%>
-            <h2 class="welcomeDiv">Ideathon</h2>
-            <table>
-                <tr>
-                    <th>S.No</th>
-                    <th>Name</th>
-                    <th>Roll No</th>
-                    <th>Mail ID</th>
-                    <th>College Name</th>
-                    <th>Start Date</th>
-                    <th>End Date</th>
-                    <th><u>Remove User</u></th>
-                </tr>
-
-                <% ideathonvar.forEach((e)=>{ %>
+    <%if(message == "User Deleted Successfully!"){%>
+        <div class="alert alert-success text-center alert-dismissible">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close" title="close">×</a>
+            <strong class="text-danger"><%=message%></strong>
+        </div>
+        <% } %>
+            <h2 class="welcomeDiv">Paper Presentation</h2>
+            <div class="table-responsive">
+                <table>
                     <tr>
-                        <td>
-                            <%= ++c%>
-                        </td>
-                        <td>
-                            <%=e.name%>
-                        </td>
-                        <td>
-                            <%=e.rollno%>
-                        </td>
-                        <td>
-                            <%=e.mailid%>
-                        </td>
-                        <td>
-                            <%=clgName%>
-                        </td>
-                        <td>
-                            <%=startDate%>
-                        </td>
-                        <td>
-                            <%=endDate%>
-                        </td>
-                        <td class="removetd">
-                            <form action="/removeUser" method="post">
-                                <input type="hidden" name="id" value="<%=e._id%>">
-                                <button type="submit" class="btn btn-outline-danger">Remove</button>
-                            </form>
-                        </td>
-                        <% }) %>
+                        <th>S.No</th>
+                        <th>Name</th>
+                        <th>Roll No</th>
+                        <th>Mail ID</th>
+                        <th>College Name</th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                        <th><u>Remove User</u></th>
                     </tr>
-            </table>
+
+                    <% pptvar.forEach((e)=>{ %>
+                        <tr>
+                            <td>
+                                <%= ++c%>
+                            </td>
+                            <td>
+                                <%=e.name%>
+                            </td>
+                            <td>
+                                <%=e.rollno%>
+                            </td>
+                            <td>
+                                <%=e.mailid%>
+                            </td>
+                            <td>
+                                <%=clgName%>
+                            </td>
+                            <td>
+                                <%=startDate%>
+                            </td>
+                            <td>
+                                <%=endDate%>
+                            </td>
+                            <td class="removetd">
+                                <form action="/removeUser" method="post">
+                                    <input type="hidden" name="id" value="<%=e._id%>">
+                                    <input type="hidden" name="eventName" value="<%=eventName%>">
+                                    <input type="hidden" name="event" value="ppt">
+                                    <button type="submit" class="btn btn-outline-danger">Remove</button>
+                                </form>
+                            </td>
+                            <% }) %>
+                        </tr>
+                </table>
+            </div>
+            <%c=0%>
+                <h2 class="welcomeDiv">Project Presentation</h2>
+                <div class="table-responsive">
+                    <table>
+                        <tr>
+                            <th>S.No</th>
+                            <th>Name</th>
+                            <th>Roll No</th>
+                            <th>Mail ID</th>
+                            <th>College Name</th>
+                            <th>Start Date</th>
+                            <th>End Date</th>
+                            <th><u>Remove User</u></th>
+                        </tr>
+
+                        <% projectvar.forEach((e)=>{ %>
+                            <tr>
+                                <td>
+                                    <%= ++c%>
+                                </td>
+                                <td>
+                                    <%=e.name%>
+                                </td>
+                                <td>
+                                    <%=e.rollno%>
+                                </td>
+                                <td>
+                                    <%=e.mailid%>
+                                </td>
+                                <td>
+                                    <%=clgName%>
+                                </td>
+                                <td>
+                                    <%=startDate%>
+                                </td>
+                                <td>
+                                    <%=endDate%>
+                                </td>
+                                <td class="removetd">
+                                    <form action="/removeUser" method="post">
+                                        <input type="hidden" name="id" value="<%=e._id%>">
+                                        <input type="hidden" name="eventName" value="<%=eventName%>">
+                                        <input type="hidden" name="event" value="project">
+                                        <button type="submit" class="btn btn-outline-danger">Remove</button>
+                                    </form>
+                                </td>
+
+                                <% }) %>
+                            </tr>
+                    </table>
+                </div>
+
+                <%c=0%>
+                    <h2 class="welcomeDiv">Ideathon</h2>
+                    <div class="table-responsive">
+                        <table>
+                            <tr>
+                                <th>S.No</th>
+                                <th>Name</th>
+                                <th>Roll No</th>
+                                <th>Mail ID</th>
+                                <th>College Name</th>
+                                <th>Start Date</th>
+                                <th>End Date</th>
+                                <th><u>Remove User</u></th>
+                            </tr>
+
+                            <% ideathonvar.forEach((e)=>{ %>
+                                <tr>
+                                    <td>
+                                        <%= ++c%>
+                                    </td>
+                                    <td>
+                                        <%=e.name%>
+                                    </td>
+                                    <td>
+                                        <%=e.rollno%>
+                                    </td>
+                                    <td>
+                                        <%=e.mailid%>
+                                    </td>
+                                    <td>
+                                        <%=clgName%>
+                                    </td>
+                                    <td>
+                                        <%=startDate%>
+                                    </td>
+                                    <td>
+                                        <%=endDate%>
+                                    </td>
+                                    <td class="removetd">
+                                        <form action="/removeUser" method="post">
+                                            <input type="hidden" name="id" value="<%=e._id%>">
+                                            <input type="hidden" name="eventName" value="<%=eventName%>">
+                                            <input type="hidden" name="event" value="ideathon">
+                                            <button type="submit" class="btn btn-outline-danger">Remove</button>
+                                        </form>
+                                    </td>
+                                    <% }) %>
+                                </tr>
+                        </table>
+                    </div>
 
 </body>
 </body>
