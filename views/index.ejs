@@ -64,23 +64,6 @@
 
                         </h6>
                     </div>
-
-                    <!-- <nav class="navbar ">
-                        <ul class="row">
-                            <li class="liClsNavBar col-lg-11 border border-dark"><a class="navbarText" href="/">Home</a></li>
-                            <% if(AdminName == "Admin"){%>
-                                <li class="liClsNavBar col-lg-11 border border-dark"><a class="navbarText" href="/adminEvent">Events</a></li>
-                                <%}else{%>
-                                    <li class="liClsNavBar col-lg-11 border border-dark"><a class="navbarText" href="/event">Events</a></li>
-                                    <%}%>
-
-                                        <li class="liClsNavBar col-lg-11 border border-dark"><a class="navbarText" href="/signin">Sign In</a></li>
-                                        <li class="liClsNavBar col-lg-11 border border-dark"><a class="navbarText" href="/adminEvent">Admin</a></li>
-                                        <li class="liClsNavBar col-lg-11 border border-dark navbarBottom">
-                                            <a class="navbarText" href="logout">Log Out</a></li>
-                        </ul>
-                    </nav> -->
-
                     <nav class="navbar ">
                         <ul class="row">
                             <li class="liClsNavBar col-lg-11 border border-dark nav-hover"><a class="navbarText" href="/">Home</a></li>
@@ -92,8 +75,13 @@
 
                                         <li class="liClsNavBar col-lg-11 border border-dark nav-hover"><a class="navbarText" href="/signin">Sign In</a></li>
                                         <li class="liClsNavBar col-lg-11 border border-dark nav-hover"><a class="navbarText" href="/adminEvent">Admin</a></li>
-                                        <li class="liClsNavBar col-lg-11 border border-dark navbarBottom nav-hover">
-                                            <a class="navbarText" href="logout">Log Out</a></li>
+                                        <% if(AdminName == "Admin" || userName!=""){%>
+                                            <li class="liClsNavBar col-lg-11 border border-dark navbarBottom nav-hover">
+                                                <a class="navbarText" href="logout">Log Out</a></li>
+                                            <% }else{%>
+                                                <li class="liClsNavBar col-lg-11 border border-dark navbarBottom nav-hover">
+                                                    <a class="navbarText" href="#contact">Contact</a></li>
+                                                <% } %>
                         </ul>
                     </nav>
                 </div>
@@ -130,9 +118,9 @@
                     <div class="col-lg-11">
                         <h3 class="home-student-head"><i class="fas fa-user-graduate home-icon-student mt-5 fa-2x"></i>Student :</h3>
                         <ul class="font-size-text">
-                            <li><i class="fas fa-check-circle mr-2"></i>Students can able to view the upcomming events by registering.</li>
-                            <li><i class="fas fa-check-circle mr-2"></i>There is a form for every events for registering.</li>
-                            <li><i class="fas fa-check-circle mr-2"></i>Students can able to view the events only after registering.</li>
+                            <li><i class="fas fa-check-circle mr-2"></i>Students can view the upcoming events by registering.</li>
+                            <li><i class="fas fa-check-circle mr-2"></i>Registration form is available for every event.</li>
+                            <li><i class="fas fa-check-circle mr-2"></i>Students can view the events only after registering.</li>
                         </ul>
                     </div>
                     <!-- <div class="col-lg-1">
@@ -143,9 +131,9 @@
                     <div class="col-lg-11">
                         <h3 class="home-student-head"><i class="fas fa-user-shield home-icon-student mt-5 fa-2x"></i>Admin :</h3>
                         <ul class="font-size-text">
-                            <li><i class="fas fa-check-circle mr-2"></i>Admin can organize the events.</li>
-                            <li><i class="fas fa-check-circle mr-2"></i>Events are visible to the users once admin had add the event</li>
-                            <li><i class="fas fa-check-circle mr-2"></i>Admin can able to view the details those who are registered for the events.</li>
+                            <li><i class="fas fa-check-circle mr-2"></i>Only admin can organize the event.</li>
+                            <li><i class="fas fa-check-circle mr-2"></i>Events are visible to the users only after the admin has added the event</li>
+                            <li><i class="fas fa-check-circle mr-2"></i>Only admin can view the event and registration.</li>
                         </ul>
                     </div>
                     <!-- <div class="col-lg-1">

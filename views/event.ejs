@@ -32,7 +32,9 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/styles.css">
 
-
+    <!-- Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
 </head>
 
@@ -94,98 +96,107 @@
             </div>
 
             <!-- Main Events -->
-            <div class="row">
-                <% ListOfEvent.forEach((e)=>{ %>
-                    <div class="col-lg-6 col-md-6 cardWhole">
-                        <div class="card">
-                            <div class="cardHeader">
-                                <%=e.clgname%>
-                                    <hr>
+            <% i=1 %>
+                <div class="row">
+                    <% ListOfEvent.forEach((e)=>{ %>
+                        <% if(i%2==0){%>
+                            <div class="col-lg-6 col-md-6 cardWhole" data-aos="fade-left" data-aos-duration="1000">
+                                <%}else{%>
+                                    <div class="col-lg-6 col-md-6 cardWhole" data-aos="fade-right" data-aos-duration="1000">
+                                        <% } %>
+                                            <%= i++%>
+                                                <div class="card">
+                                                    <div class="cardHeader">
+                                                        <%=e.clgname%>
+                                                            <hr>
+                                                    </div>
+
+                                                    <div class="cardBody ">
+                                                        <div class="cardList ">
+                                                            <i class="fas fa-school CardIcons "></i> <span class="cardText "> <u>Event Name</u> - <%=e.eventname%></span>
+                                                        </div>
+
+                                                        <div class="cardList ">
+                                                            <i class="far fa-clock CardIcons "></i> <span class="cardText "> <u>Due Date</u> - <%=e.startdate%> </span>
+                                                        </div>
+
+                                                        <div class="cardList ">
+                                                            <i class="fas fa-envelope-open-text CardIcons "></i> <span class="cardText "> <u>Medium</u> - <%=e.medium%></span>
+                                                        </div>
+                                                        <div class="EventRegsButton ">
+                                                            <form action="/innerMoveEvent" method="post">
+                                                                <input type="hidden" name="eventName" value="<%=e.eventname%>">
+                                                                <button type="submit" class="btn btn-outline-success">Go To Event</button>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                    </div>
+                                    <% }) %>
                             </div>
-
-                            <div class="cardBody ">
-                                <div class="cardList ">
-                                    <i class="fas fa-school CardIcons "></i> <span class="cardText "> <u>Event Name</u> - <%=e.eventname%></span>
-                                </div>
-
-                                <div class="cardList ">
-                                    <i class="far fa-clock CardIcons "></i> <span class="cardText "> <u>Due Date</u> - <%=e.startdate%> </span>
-                                </div>
-
-                                <div class="cardList ">
-                                    <i class="fas fa-envelope-open-text CardIcons "></i> <span class="cardText "> <u>Medium</u> - <%=e.medium%></span>
-                                </div>
-                                <div class="EventRegsButton ">
-                                    <form action="/innerMoveEvent" method="post">
-                                        <input type="hidden" name="eventName" value="<%=e.eventname%>">
-                                        <button type="submit" class="btn btn-outline-success">Go To Event</button>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <% }) %>
-            </div>
 
         </section>
-    </div>
+        </div>
 
-    <!-- Menu Burgger -->
-    <article>
-        <div class="modal fade" id="signin-Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <!-- Close -->
-                    <div class="modal-header border-bottom-0">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+        <!-- Menu Burgger -->
+        <article>
+            <div class="modal fade" id="signin-Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <!-- Close -->
+                        <div class="modal-header border-bottom-0">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
                                 </button>
-                    </div>
+                        </div>
 
-                    <!-- Context -->
-                    <div class="modal-body">
-                        <div class="container wholeModel">
-                            <div class="text-center">
+                        <!-- Context -->
+                        <div class="modal-body">
+                            <div class="container wholeModel">
+                                <div class="text-center">
 
-                                <h3 class="name">Event Show</h3>
-                                <p>Glory Your Self By Participating</p>
-                                <h6 class="text-light my-auto">
-                                    <i class="fas fa-user-tie fa-2x"></i>
-                                    <samp class="nameIndex">
+                                    <h3 class="name">Event Show</h3>
+                                    <p>Glory Your Self By Participating</p>
+                                    <h6 class="text-light my-auto">
+                                        <i class="fas fa-user-tie fa-2x"></i>
+                                        <samp class="nameIndex">
                                         <%=userName%>
                                             </samp>
-                                </h6>
-                            </div>
+                                    </h6>
+                                </div>
 
-                            <div class="container ModelItems">
-                                <p class="border border-dark navbarTextModel "><a class="navbarText" href="/">Home</a></p>
-                            </div>
-                            <div class="container ModelItems">
-                                <p class="border border-dark navbarTextModel "><a class="navbarText" href="/event">Events</a></p>
-                            </div>
-                            <div class="container ModelItems">
-                                <p class="border border-dark navbarTextModel "><a class="navbarText" href="/signin">Sign In</a></p>
-                            </div>
-                            <div class="container ModelItems">
-                                <p class="border border-dark navbarTextModel "><a class="navbarText" href="/adminEvent">Admin</a></p>
-                            </div>
-                            <div class="container ModelItems">
-                                <a href="">
-                                    <p class="border border-dark navbarTextModel "><a class="navbarText" href="logout">Log Out</a></p>
-                                </a>
+                                <div class="container ModelItems">
+                                    <p class="border border-dark navbarTextModel "><a class="navbarText" href="/">Home</a></p>
+                                </div>
+                                <div class="container ModelItems">
+                                    <p class="border border-dark navbarTextModel "><a class="navbarText" href="/event">Events</a></p>
+                                </div>
+                                <div class="container ModelItems">
+                                    <p class="border border-dark navbarTextModel "><a class="navbarText" href="/signin">Sign In</a></p>
+                                </div>
+                                <div class="container ModelItems">
+                                    <p class="border border-dark navbarTextModel "><a class="navbarText" href="/adminEvent">Admin</a></p>
+                                </div>
+                                <div class="container ModelItems">
+                                    <a href="">
+                                        <p class="border border-dark navbarTextModel "><a class="navbarText" href="logout">Log Out</a></p>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-    </article>
+        </article>
 
-    <!-- jQuery -->
-    <script src='https://code.jquery.com/jquery-3.3.1.slim.min.js'></script>
-    <!-- Popper JS -->
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js'></script>
-    <!-- Bootstrap JS -->
-    <script src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js'></script>
-    <!-- <script src="animation.js"></script> -->
+        <!-- jQuery -->
+        <script src='https://code.jquery.com/jquery-3.3.1.slim.min.js'></script>
+        <!-- Popper JS -->
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js'></script>
+        <!-- Bootstrap JS -->
+        <script src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js'></script>
+        <!-- <script src="animation.js"></script> -->
+        <script>
+            AOS.init();
+        </script>
 </body>
 
 </html>

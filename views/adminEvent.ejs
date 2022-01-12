@@ -32,6 +32,9 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/styles.css">
 
+    <!-- Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
 
 </head>
@@ -184,13 +187,12 @@
                                     <!-- Main Event-->
                                     <div class="row">
                                         <% ListOfEvent.forEach((e)=>{ %>
-                                            <div class="col-lg-6 col-md-6 cardWhole">
+                                            <div class="col-lg-6 col-md-6 cardWhole" data-aos="flip-right" data-aos-duration="1000">
                                                 <div class="card">
                                                     <div class="cardHeader">
                                                         <%=e.clgname%>
                                                             <form action="/removeEvent" method="post">
                                                                 <input type="hidden" name="eventName" value="<%=e.eventname%>">
-                                                                <!-- <i class="fas fa-calendar-minus fa-2x text-danger" type="submit"></i> -->
                                                                 <button type="submit " class="btn btn-danger " onclick="removeEvent() ">Remove</button>
                                                             </form>
                                                             <hr>
@@ -355,6 +357,11 @@
     <!-- Bootstrap JS -->
     <script src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js'></script>
     <script src="animation.js"></script>
+
+    <script>
+        AOS.init();
+    </script>
+
 </body>
 
 </html>
