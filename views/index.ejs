@@ -150,9 +150,6 @@
             <div class="text-center">
 
                 <h5 class="contact">
-                    <a href="#" target="_blank">
-                        <i class="fab fa-github-square fa-2x contactIcons"></i>
-                    </a>
                     <a href="mailto:sowbhakian.shansan@gmail.com" target="_blank">
                         <i class="fas fa-envelope fa-2x contactIcons"></i>
                     </a>
@@ -207,11 +204,20 @@
                                 <div class="container ModelItems">
                                     <p class="border border-dark navbarTextModel "><a class="navbarText" href="/adminEvent">Admin</a></p>
                                 </div>
-                                <div class="container ModelItems">
-                                    <a href="">
-                                        <p class="border border-dark navbarTextModel "><a class="navbarText" href="logout">Log Out</a></p>
-                                    </a>
-                                </div>
+                                <% if(AdminName == "Admin" || userName!=""){%>
+                                    <div class="container ModelItems">
+                                        <a href="">
+                                            <p class="border border-dark navbarTextModel "><a class="navbarText" href="logout">Log Out</a></p>
+                                        </a>
+                                    </div>
+                                    <% } else {%>
+                                        <div class="container ModelItems">
+                                            <a href="">
+                                                <p class="border border-dark navbarTextModel "><a class="navbarText" href="logout">Contact</a></p>
+                                            </a>
+                                        </div>
+
+                                        <% } %>
                             </div>
                         </div>
                     </div>
